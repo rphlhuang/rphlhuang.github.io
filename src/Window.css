@@ -1,0 +1,11 @@
+.window {
+    background-color: white;
+    border: solid black;
+    border-width: 5px 5px;
+    height: 40vh;
+    width: 60vw;
+}
+
+p {
+    padding: 5px;
+}

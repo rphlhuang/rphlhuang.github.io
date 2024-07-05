@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import logoR from "./img/logoR.png";
 import './App.css';
+import Icon from './Icon.js'
+import Window from './Window.js'
+import { useState, useRef } from "react";
 
 function App() {
+
+  // what is this
+  const ref = useRef(null);
+
+  const [icons, setIcons] = useState([]);
+  const [windows, setWindows] = useState([]);
+
+  const onClickHandler = () => {
+    console.log('clicked');
+    setWindows(windows.concat(<Window/>))
+  };
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="topBar" onClick={onClickHandler}>
+        <img src={logoR} className="logoR" alt="logo"/>
+      </div>
+
+    <div className="desktop">
+      <Icon onClick={onClickHandler}/>
+      {windows}
+    </div>
+
     </div>
   );
 }

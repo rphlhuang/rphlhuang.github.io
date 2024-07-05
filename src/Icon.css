@@ -1,0 +1,12 @@
+.logoR {
+    position: absolute;
+    left: 0vw;
+    height: 10vh;
+    pointer-events: none;
+    filter:invert(1)
+}
+
+.tempLogo {  
+    height: 20vh;
+}
+  
