@@ -20,12 +20,12 @@ function App() {
   
   return (
     <div className="App">
-      <div className="topBar" onClick={onClickHandler}>
+      <div className="topBar">
         <img src={logoR} className="logoR" alt="logo"/>
       </div>
 
     <div className="desktop">
-      <Icon onClick={onClickHandler}/>
+      <div onDoubleClick={onClickHandler}><Icon/></div>
       {windows}
     </div>
 
