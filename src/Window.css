@@ -6,6 +6,40 @@
     width: 60vw;
 }
 
-p {
+.dragbar {
+    background-color: black;
+
+}
+
+.toolbar {
+    display: flex !important;
+    width: 100%;
+}
+
+.close {
+    font-size: 18pt;
+    color: white;
+    padding-bottom: 6px;
+    padding-right: 6px;
+    margin-left: auto !important;
+    
+    cursor: pointer;
+    user-select: none;
+}
+
+.windowName {
+    font-size: 18pt;
+    color: white;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-top: 2px;
+    margin-right: auto !important;
+    font-weight: bold;
+
+    user-select: none;
+}
+
+.contentContainer {
     padding: 5px;
+    font-family: sans-serif;
 }
