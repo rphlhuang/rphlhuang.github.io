@@ -7,5 +7,26 @@
 }
 
 .tempLogo {  
-    height: 20vh;
+    height: 15vh;
+    max-width: 100%;
+}
+
+.iconContainer {
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: flex-start;
+    padding-bottom: 20px;
+}
+
+.iconNameContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.iconName {
+    text-align: center;
+    font-family: monospace;
 }

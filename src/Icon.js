@@ -1,16 +1,17 @@
 import Draggable from 'react-draggable';
-import folderIcon from "./img/folderIcon.png";
+import folderIcon from "./img/folderIconCopy.png";
 import "./Icon.css"
 
 
-function Icon() {
-    const rightBound = window.screen.width - 180;
-    const bottomBound = window.screen.height - 320;
-
+function Icon({name, onClick, thumbnail}) {
 
     return(
-        <Draggable bounds={{left:0, right:rightBound, top:0, bottom:bottomBound}} defaultPosition={{x: 0, y: 0}}>
-                <img draggable="false" src={folderIcon} className="tempLogo" alt="logo"/>
+        <Draggable bounds="parent" defaultPosition={{x: 0, y: 0}}>
+                <div className='iconContainer'>
+                    {/* <img draggable="false" src={folderIcon} onDoubleClick={() => onClick(name)} className="tempLogo" alt="logo"/> */}
+                    <img draggable="false" src={thumbnail} onDoubleClick={() => onClick(name)} className="tempLogo" alt="logo"/>
+                    <div className='iconNameContainer'><div className='iconName'>{name}</div></div>
+                </div>
         </Draggable>
     );
 }

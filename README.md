@@ -32,3 +32,4 @@ Runs `npm run build`, then deploys the app to the `gh-pages` branch on the curre
 ## cool react packages
 
 https://www.npmjs.com/package/react-draggable
+https://github.com/bokuweb/react-rnd?tab=readme-ov-file#test

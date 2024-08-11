@@ -9,20 +9,8 @@ function App() {
 
   // what is this
   // const ref = useRef(null);
-
-  // const [icons, setIcons] = useState([]);
   const [windows, setWindows] = useState([]);
   const [activeWindowId, setActiveWindowId] = useState(null);
-
-  const onClickHandler = () => {
-    const newWindow = {
-      id: uuidv4(),
-      title: 'New Window',
-      content: 'Window Content',
-      isOpen: true
-    };
-    setWindows(prevWindows => [...prevWindows, newWindow]);
-  };
 
   const closeWindow = (id) => {
     setWindows(prevWindows =>
@@ -34,6 +22,17 @@ function App() {
     setActiveWindowId(id);
   };
 
+  const iconClickedHandler = (name) => {
+    const newWindow = {
+      id: uuidv4(),
+      title: name,
+      content: 'Window Content',
+      isOpen: true
+    };
+    setWindows(prevWindows => [...prevWindows, newWindow]);
+  }
+
+  const folderImg = require("./img/folderIcon.png");
   
   return (
     <div className="App">
@@ -42,9 +41,10 @@ function App() {
       </div>
 
     <div className="desktop">
-      <div onDoubleClick={onClickHandler}><Icon/></div>
-      <div onDoubleClick={onClickHandler}><Icon/></div>
-      <div onDoubleClick={onClickHandler}><Icon/></div>
+      <Icon onClick={iconClickedHandler} thumbnail={folderImg} name={"photos"}/>
+      <Icon onClick={iconClickedHandler} thumbnail={folderImg} name={"jrnl"}/>
+      <Icon onClick={iconClickedHandler} thumbnail={folderImg} name={"misc"}/>
+
       {windows.map(win => (
         win.isOpen && (
           <Window
