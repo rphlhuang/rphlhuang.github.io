@@ -1,10 +1,3 @@
-.window {
-    background-color: white;
-    border: solid black;
-    border-width: 5px 5px;
-    height: 40vh;
-    width: 60vw;
-}
 
 .dragbar {
     background-color: black;
@@ -41,5 +34,20 @@
 
 .contentContainer {
     padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+
+    width: 100%;
+    height: 100%;
+
     font-family: monospace;
+}
+
+
+.contentContainer img {
+    width: 100%; /* Ensures images take up the full grid cell */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: cover; /* Ensures the image covers the grid cell */
+    border-radius: 5px; /* Optional: Adds a bit of rounding to the corners */
 }

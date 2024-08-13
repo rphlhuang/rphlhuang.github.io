@@ -1,18 +1,17 @@
 import Draggable from 'react-draggable';
-import folderIcon from "./img/folderIconCopy.png";
 import "./Icon.css"
 
 
-function Icon({name, onClick, thumbnail}) {
+function Icon({name, onClick, thumbnail, boundingSelector}) {
 
     return(
-        <Draggable bounds="parent" defaultPosition={{x: 0, y: 0}}>
+        <Draggable bounds={boundingSelector} defaultPosition={{x: 0, y: 0}}>
                 <div className='iconContainer'>
-                    {/* <img draggable="false" src={folderIcon} onDoubleClick={() => onClick(name)} className="tempLogo" alt="logo"/> */}
-                    <img draggable="false" src={thumbnail} onDoubleClick={() => onClick(name)} className="tempLogo" alt="logo"/>
+                    <img draggable="false" src={thumbnail} onDoubleClick={() => onClick(name)} className="iconImage" alt="logo"/>
                     <div className='iconNameContainer'><div className='iconName'>{name}</div></div>
                 </div>
         </Draggable>
+        
     );
 }
 

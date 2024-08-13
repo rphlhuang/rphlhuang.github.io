@@ -41,9 +41,9 @@ function App() {
       </div>
 
     <div className="desktop">
-      <Icon onClick={iconClickedHandler} thumbnail={folderImg} name={"photos"}/>
-      <Icon onClick={iconClickedHandler} thumbnail={folderImg} name={"jrnl"}/>
-      <Icon onClick={iconClickedHandler} thumbnail={folderImg} name={"misc"}/>
+      <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name={"photos"}/>
+      <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name={"jrnl"}/>
+      <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name={"misc"}/>
 
       {windows.map(win => (
         win.isOpen && (

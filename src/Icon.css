@@ -3,12 +3,18 @@
     left: 0vw;
     height: 10vh;
     pointer-events: none;
-    filter:invert(1)
+    filter:invert(1);
 }
 
-.tempLogo {  
+.iconImage {  
     height: 15vh;
     max-width: 100%;
+
+    width: 130px; /* Desired width for all thumbnails */
+    height: 100px; /* Desired height for all thumbnails */
+    object-fit: cover; /* Ensures the image fills the box, cropping if necessary */
+    border-radius: 2px; /* Optional: Add some rounding to the corners */
+    overflow: hidden; /* Ensures that any overflow is clipped */
 }
 
 .iconContainer {
@@ -17,7 +23,6 @@
     flex-direction: column;
     text-align: center;
     align-items: flex-start;
-    padding-bottom: 20px;
 }
 
 .iconNameContainer {
