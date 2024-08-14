@@ -1,7 +1,7 @@
 
 .dragbar {
     background-color: black;
-
+    cursor: move;
 }
 
 .toolbar {
@@ -51,3 +51,4 @@
     object-fit: cover; /* Ensures the image covers the grid cell */
     border-radius: 5px; /* Optional: Adds a bit of rounding to the corners */
 }
+

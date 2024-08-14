@@ -29,7 +29,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 Runs `npm run build`, then deploys the app to the `gh-pages` branch on the current repo.
 
-## cool react packages
+## cool libraries and websites
 
 https://www.npmjs.com/package/react-draggable
+
 https://github.com/bokuweb/react-rnd?tab=readme-ov-file#test
+
+https://cubic-bezier.com

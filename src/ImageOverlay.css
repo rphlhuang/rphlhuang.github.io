@@ -1,45 +1,105 @@
 .overlay {
     position: fixed;
-    top: 0;
+    top: 10vh;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    height: 2000px;
+    z-index: 1000;
+
     display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    animation: slideIn 0.5s ease-in-out;
+    flex-direction: column;
+    animation: slideUp 0.4s ease-in-out forwards;
+    /*bouncy: cubic-bezier(.42,.49,.16,1.22)*/
+}
+
+.overlay-background {
+    position: absolute;
+    top: 0; /* Start off-screen */
+    left: 0;
+    width: 100%;
+    height: 200vh;
+    /* background-color: rgb(194, 194, 194); Solid grey */
+    background-color: black;
+    z-index: 1;
+    /* animation: slideUp 1s ease-in forwards; */
+}
+
+.overlay-toolbar {
+    position: absolute;
+    top: 0;
+    height: fit-content;
+    z-index: 3;
+    color: white;
+    font-size: 24pt;
+    padding-left: 1vw;
+    font-weight: bold;
+    cursor: pointer;
+    padding-bottom: 1vw;
+    /* animation: slideUp 1.0s ease-in forwards; */
 }
 
 .overlay-content {
-    width: 80%;
-    max-width: 800px;
-    max-height: 90%;
-    position: relative;
+    position: fixed;
+    padding: 8vh;
+    z-index: 2;
+    color: white;
+    overflow-y: auto !important;
+    height: fit-content;
+
+    /* animation: slideUp 1.0s ease-in-out forwards; Fade in the image */
+}
+
+.overlay-title {
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: "Helvetica Neue", sans-serif !important;
+    padding-bottom: 10px;
+}
+
+.overlay-text-block {
+    font-family: monospace;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.animateOut {
+    animation: slideLeft 0.5s ease-in-out forwards;
+}
+
+.animateFade {
+    animation: fadeOut 0.3s forwards;
 }
 
 .overlay img {
-    width: 100%;
-    height: auto;
-    max-height: 100%;
+    width: 80%;
+    max-width: 800px;
+    max-height: 90%;
     object-fit: contain;
 }
 
-@keyframes slideIn {
+@keyframes slideLeft {
     from {
-        transform: translateY(100%);
+        left: 0;
     }
     to {
-        transform: translateY(0);
+        left:-100%;
     }
 }
 
-@keyframes slideOut {
+@keyframes slideUp {
     from {
-        transform: translateY(0);
+        top: 100%; /* Start off-screen */
     }
     to {
-        transform: translateY(100%);
+        top: 10vh; /* End at the top */
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0%
     }
 }

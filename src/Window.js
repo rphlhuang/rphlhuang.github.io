@@ -5,10 +5,18 @@ import { v4 as uuidv4 } from 'uuid';
 import ImageOverlay from './ImageOverlay.js';
 import Icon from "./Icon.js"
 import "./Window.css";
-import data from "./photos.json"
+import index from "./index.json"
 
 
-function Window({id, title, content, onClose, onContainerClick, onContainerDrag, active}) {
+/*
+TODO:
+- make posts load from json file
+    --> use require.context to acquire json files
+    --> use index's keys to search for correct post based on title
+    --> load that post
+*/
+
+function Window({id, title, onClose, onContainerClick, onContainerDrag, active}) {
     const style = {
         border: "solid 1px #ddd",
         background: "#f0f0f0",
@@ -18,47 +26,68 @@ function Window({id, title, content, onClose, onContainerClick, onContainerDrag,
     };
 
 
+    // states
     const [contents, setContents] = useState([]);
     const contentRef = useRef(null);
     const [lockedSize, setLockedSize] = useState(null);
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedPost, setSelectedPost] = useState(null);
 
-    const handleImageClick = (imageSrc) => {
-        setSelectedImage(imageSrc);
+    // overlay handlers
+    const handleImageClick = (title) => {
+        if (document.getElementById("overlay")) {
+            document.getElementById("overlay").classList.remove("animateOut");
+        }
+        if (document.getElementsByClassName("overlay-text-block")) {
+            const textBlocks = document.getElementsByClassName("overlay-text-block");
+            for (let i = 0; i < textBlocks.length; i++) {
+                textBlocks[i].classList.remove("animateFade");
+            }
+        }
+        setSelectedPost(title);
     };
+
+    const handleAnimationEnd = (e) => {
+        if (e.animationName === "slideLeft") {
+            setSelectedPost(null);
+        }
+    }
 
     const closeOverlay = () => {
-        setSelectedImage(null);
+        document.getElementsByClassName("overlay")[0].classList.add("animateOut");
+        const textBlocks = document.getElementsByClassName("overlay-text-block");
+        for (let i = 0; i < textBlocks.length; i++) {
+            textBlocks[i].classList.add("animateFade");
+        }
     };
 
+    // load images dynamically
     useEffect(() => {
+        setContents([]);
         const images = require.context('./img/photos', false, /\.(png|jpe?g|svg)$/);
 
         const loadImages = () => {
-            const newContents = data.img_paths.map((path) => (
-                <Icon
-                    id={uuidv4()}
-                    name={path}
-                    thumbnail={images(`./${path}`)}
-                    boundingSelector=".desktop"
-                    onClick={() => handleImageClick(images(`./${path}`))}
-                />
-            ));
-            console.log(newContents);
-            setContents(newContents);
+            for (const [title, path] of Object.entries(index)) {
+                const newContents = {
+                        id: uuidv4(),
+                        name: title,
+                        thumbnail: images(`./${path}`),
+                        boundingSelector: ".desktop",
+                        onClick: () => handleImageClick(title)
+                };
+                setContents(prevContents => [...prevContents, newContents]);
+            }
         };
-
         loadImages();
     }, []); // empty dependency array, only runs once
 
 
+    // set image size and keep it that way
     useEffect(() => {
         if (contentRef.current && !lockedSize) {
             const { offsetWidth, offsetHeight } = contentRef.current;
             setLockedSize({ width: offsetWidth, height: offsetHeight });
         }
     }, [contents, lockedSize]); // run this effect when contents are loaded AND lockedSize is not set
-
 
     return (
         <>
@@ -80,15 +109,23 @@ function Window({id, title, content, onClose, onContainerClick, onContainerDrag,
                 </div>
 
                 <div className='contentContainer' ref={contentRef} style={lockedSize ? lockedSize : {}}>
-                    {data.text}
-                    {contents}
+                    {contents.map(content => (
+                        <Icon
+                            id={content.id}
+                            name={content.title}
+                            thumbnail={content.thumbnail}
+                            boundingSelector={content.boundingSelector}
+                            onClick={content.onClick}
+                        />
+                    ))}
                 </div>
             </Rnd>
 
             <ImageOverlay 
-                isVisible={!!selectedImage} 
-                imageSrc={selectedImage} 
+                isVisible={!!selectedPost} // cast to bool
+                postName={selectedPost} 
                 onClose={closeOverlay} 
+                handleAnimationEnd={handleAnimationEnd}
             />
         </>
     );

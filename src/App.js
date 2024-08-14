@@ -7,8 +7,6 @@ import { useState } from "react";
 
 function App() {
 
-  // what is this
-  // const ref = useRef(null);
   const [windows, setWindows] = useState([]);
   const [activeWindowId, setActiveWindowId] = useState(null);
 
@@ -36,12 +34,17 @@ function App() {
   
   return (
     <div className="App">
-      <div className="topBar">
-        <img src={logoR} className="logoR" alt="logo"/>
+      <div className="navbar">
+        <div>
+          <img src={logoR} className="logoR" alt="logo"/>
+        </div>
+        <div className="navbarElem"> <div className="navbarElemText"> blog </div> </div>
+        <div className="navbarElem"> <div className="navbarElemText"> portfolio </div> </div>
+        <div className="navbarElem"> <div className="navbarElemText"> about </div> </div>
       </div>
 
     <div className="desktop">
-      <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name={"photos"}/>
+      {/* <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name={"photos"}/> */}
       <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name={"jrnl"}/>
       <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name={"misc"}/>
 

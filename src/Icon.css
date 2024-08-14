@@ -2,7 +2,8 @@
     position: absolute;
     left: 0vw;
     height: 10vh;
-    pointer-events: none;
+    cursor: pointer;
+    user-select: none;
     filter:invert(1);
 }
 
@@ -15,6 +16,10 @@
     object-fit: cover; /* Ensures the image fills the box, cropping if necessary */
     border-radius: 2px; /* Optional: Add some rounding to the corners */
     overflow: hidden; /* Ensures that any overflow is clipped */
+
+    user-select: none;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .iconContainer {
@@ -34,4 +39,7 @@
 .iconName {
     text-align: center;
     font-family: monospace;
+
+    user-select: none;
+    pointer-events: auto;
 }

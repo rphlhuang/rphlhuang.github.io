@@ -1,17 +1,24 @@
-.App {
+.logoContainer {
+  display: inline-block;
+  height: 100%;
+  width: 100px;
 }
 
 .logoR {
-  position: absolute;
-  left: 0vw;
-  height: 10vh;
+  display: block;
+  height: 100%;
   pointer-events: none;
+  user-select: none;
   filter:invert(1)
 }
 
-.topBar {
+.navbar {
   height: 10vh;
   background-color: black;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  z-index: 0;
 }
 
 .desktop {
@@ -20,4 +27,18 @@
   top: 10vh;
   height: 90%;
   width: 100%;
+}
+
+.navbarElem {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 14px;
+  padding-right: 14px;
+  z-index: 10;
+}
+
+.navbarElemText {
+  color: white;
+  cursor: pointer;
 }
