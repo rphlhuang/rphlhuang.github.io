@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import "./ImageOverlay.css";
 
 function OverlayTextBlock ({ text }) {
@@ -54,14 +53,15 @@ function ImageOverlay({ isVisible, postName, onClose, handleAnimationEnd }) {
 
     return (
         <div className="overlay" onAnimationEnd={handleAnimationEnd}>
-            <div className="overlay-background"></div>
             <div className="overlay-toolbar" onClick={onClose}>⋘</div>
             <div className="overlay-content">
                 <div className="overlay-title">{currentPostObject.title}</div>
                 <img src={imageSrc} alt="Full Resolution"/>
-                {currentPostObject.text.map(paragraph => (
-                    <OverlayTextBlock text={paragraph}/>
-                ))}
+                <div className="overlay-text">
+                    {currentPostObject.text.map(paragraph => (
+                        <OverlayTextBlock text={paragraph}/>
+                    ))}
+                </div>
             </div>
         </div>
     );

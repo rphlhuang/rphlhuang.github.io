@@ -3,50 +3,36 @@
     top: 10vh;
     left: 0;
     width: 100%;
-    height: 2000px;
+    height: 100%;
     z-index: 1000;
-
+    overflow-y: auto; 
     display: flex;
     flex-direction: column;
-    animation: slideUp 0.4s ease-in-out forwards;
-    /*bouncy: cubic-bezier(.42,.49,.16,1.22)*/
-}
-
-.overlay-background {
-    position: absolute;
-    top: 0; /* Start off-screen */
-    left: 0;
-    width: 100%;
-    height: 200vh;
-    /* background-color: rgb(194, 194, 194); Solid grey */
     background-color: black;
-    z-index: 1;
-    /* animation: slideUp 1s ease-in forwards; */
+    animation: slideUp 0.4s ease-in-out forwards;
 }
 
 .overlay-toolbar {
-    position: absolute;
+    position: relative;
     top: 0;
     height: fit-content;
-    z-index: 3;
+    z-index: 14;
     color: white;
     font-size: 24pt;
     padding-left: 1vw;
     font-weight: bold;
     cursor: pointer;
     padding-bottom: 1vw;
-    /* animation: slideUp 1.0s ease-in forwards; */
 }
 
 .overlay-content {
-    position: fixed;
-    padding: 8vh;
-    z-index: 2;
+    position: relative;
+    padding-left: 7vh;
+    padding-right: 7vh;
+    padding-top: 1vh;
+    z-index: 13;
     color: white;
-    overflow-y: auto !important;
-    height: fit-content;
-
-    /* animation: slideUp 1.0s ease-in-out forwards; Fade in the image */
+    height: 100%;
 }
 
 .overlay-title {
@@ -60,6 +46,12 @@
     font-family: monospace;
     padding-top: 10px;
     padding-bottom: 15px;
+}
+
+.overlay-text {
+    overflow-y: scroll;
+    max-height: 100%;
+    padding-bottom: 20px;
 }
 
 .animateOut {

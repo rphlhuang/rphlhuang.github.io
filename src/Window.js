@@ -7,15 +7,6 @@ import Icon from "./Icon.js"
 import "./Window.css";
 import index from "./index.json"
 
-
-/*
-TODO:
-- make posts load from json file
-    --> use require.context to acquire json files
-    --> use index's keys to search for correct post based on title
-    --> load that post
-*/
-
 function Window({id, title, onClose, onContainerClick, onContainerDrag, active}) {
     const style = {
         border: "solid 1px #ddd",
