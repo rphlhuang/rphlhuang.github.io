@@ -55,7 +55,7 @@ function ImageOverlay({ isVisible, postName, onClose, handleAnimationEnd }) {
         <div className="overlay" onAnimationEnd={handleAnimationEnd}>
             <div className="overlay-toolbar" onClick={onClose}>⋘</div>
             <div className="overlay-content">
-                <div className="overlay-title">{currentPostObject.title}</div>
+                <div className="overlay-title">{currentPostObject.title}     {currentPostObject.date}</div>
                 <img src={imageSrc} alt="Full Resolution"/>
                 <div className="overlay-text">
                     {currentPostObject.text.map(paragraph => (

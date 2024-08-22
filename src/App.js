@@ -39,14 +39,14 @@ function App() {
           <img src={logoR} className="logoR" alt="logo"/>
         </div>
         <div className="navbarElem"> <div className="navbarElemText"> blog </div> </div>
-        <div className="navbarElem"> <div className="navbarElemText"> portfolio </div> </div>
-        <div className="navbarElem"> <div className="navbarElemText"> about </div> </div>
+        <div className="navbarElem"> <div className="navbarElemText"> <a href="https://blu-exe.github.io/" id="link">portfolio</a> </div> </div>
+        <div className="navbarElem"> <div className="navbarElemText"> <a href="https://blu-exe.github.io/" id="link">about</a> </div> </div>
       </div>
 
     <div className="desktop">
       {/* <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name={"photos"}/> */}
       <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name={"jrnl"}/>
-      <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name={"misc"}/>
+      {/* <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name={"misc"}/> */}
 
       {windows.map(win => (
         win.isOpen && (

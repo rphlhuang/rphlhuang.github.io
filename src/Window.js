@@ -60,11 +60,12 @@ function Window({id, title, onClose, onContainerClick, onContainerDrag, active})
             for (const [title, path] of Object.entries(index)) {
                 const newContents = {
                         id: uuidv4(),
-                        name: title,
+                        name: String(title),
                         thumbnail: images(`./${path}`),
                         boundingSelector: ".desktop",
                         onClick: () => handleImageClick(title)
                 };
+                console.log(newContents);
                 setContents(prevContents => [...prevContents, newContents]);
             }
         };
@@ -103,7 +104,7 @@ function Window({id, title, onClose, onContainerClick, onContainerDrag, active})
                     {contents.map(content => (
                         <Icon
                             id={content.id}
-                            name={content.title}
+                            name={content.name}
                             thumbnail={content.thumbnail}
                             boundingSelector={content.boundingSelector}
                             onClick={content.onClick}
