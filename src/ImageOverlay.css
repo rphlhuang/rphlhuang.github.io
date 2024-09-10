@@ -49,7 +49,6 @@
 }
 
 .overlay-text {
-    overflow-y: scroll;
     max-height: 100%;
     padding-bottom: 20px;
 }
