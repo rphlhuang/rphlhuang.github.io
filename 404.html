@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tic-Tac-Toe</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin: 40px;
+      background: #f5f5f5;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .board {
+      display: inline-grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 5px;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      background: #fff;
+      font-size: 2em;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid #ccc;
+    }
+
+    .info {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+
+<h1>Oops!</h1>
+<p>
+    We can't seem to find the page you're looking for.
+</p>
+<p>
+    But while you're here, why not play a quick game of Tic-Tac-Toe?
+</p>
+
+<div class="board">
+  <!-- 9 cells (3x3) -->
+  <div class="cell" data-index="0"></div>
+  <div class="cell" data-index="1"></div>
+  <div class="cell" data-index="2"></div>
+  <div class="cell" data-index="3"></div>
+  <div class="cell" data-index="4"></div>
+  <div class="cell" data-index="5"></div>
+  <div class="cell" data-index="6"></div>
+  <div class="cell" data-index="7"></div>
+  <div class="cell" data-index="8"></div>
+</div>
+
+<div class="info">
+  Current Player: <span id="current-player">X</span>
+</div>
+
+<script>
+  /*
+    Steps/Logic:
+
+    1. We track the board as an array of 9 elements, each either null, 'X', or 'O'.
+    2. The current player toggles between 'X' and 'O'.
+    3. On a cell click:
+       - If the cell is empty, place the current player's symbol there.
+       - Check for a win or tie. If found, alert the result and reset the board.
+       - Otherwise, switch the current player.
+    4. Checking win:
+       - We have 8 possible winning combinations for 3 in a row (rows, columns, diagonals).
+    5. If we fill all 9 cells without a winner, that's a tie.
+  */
+
+  // Initialize board state
+  let board = Array(9).fill(null);
+  let currentPlayer = 'X';
+
+  const cells = document.querySelectorAll('.cell');
+  const currentPlayerDisplay = document.getElementById('current-player');
+
+  // Winning patterns (indices of board array)
+  const winningPatterns = [
+    [0,1,2], [3,4,5], [6,7,8], // rows
+    [0,3,6], [1,4,7], [2,5,8], // columns
+    [0,4,8], [2,4,6]           // diagonals
+  ];
+
+  function handleCellClick(e) {
+    const index = e.target.getAttribute('data-index');
+    
+    // If cell already occupied or game over, ignore
+    if (board[index]) return;
+
+    // Place current player's mark
+    board[index] = currentPlayer;
+    e.target.textContent = currentPlayer;
+
+    // Check for win or tie
+    if (checkWin()) {
+      alert(`You won! Now go find what you were looking for D:`);
+      resetGame();
+      return;
+    }
+
+    if (checkTie()) {
+      alert(`You tied! Now go find what you were looking for D:`);
+      resetGame();
+      return;
+    }
+
+    // Switch current player
+    currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
+    currentPlayerDisplay.textContent = currentPlayer;
+  }
+
+  function checkWin() {
+    return winningPatterns.some(pattern => {
+      const [a, b, c] = pattern;
+      return board[a] && board[a] === board[b] && board[b] === board[c];
+    });
+  }
+
+  function checkTie() {
+    return board.every(cell => cell !== null);
+  }
+
+  function resetGame() {
+    board.fill(null);
+    currentPlayer = 'X';
+    currentPlayerDisplay.textContent = currentPlayer;
+    cells.forEach(cell => cell.textContent = '');
+  }
+
+  // Attach event listeners
+  cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+</script>
+
+</body>
+</html>
