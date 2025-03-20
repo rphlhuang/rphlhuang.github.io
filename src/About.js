@@ -15,19 +15,19 @@ function About() {
 
             <div className="intro-row">
                 <div className="left-col">
-                    <h1>Raphael Huang</h1>
+                    <h1 className="name">Raphael Huang</h1>
                 </div>
                 <div className="right-col">
-                    <i>Computer Engineering Undergrad at UC Santa Cruz</i>
+                    <i className="title"><b>Computer Engineering Undergrad at UC Santa Cruz</b></i>
                 </div>
             </div>
 
             <div className="content-row">
                 <div className="left-col">
-                    <img src={require("./img/about.jpg")} style={{ width: "16vw" }} className="profile-pic" alt="profile" />
+                    <img src={require("./img/about.jpg")} style={{ width: "28vw" }} className="profile-pic" alt="profile" />
                 </div>
                 <div className="right-col">
-                    <p>
+                    <p className="main-body">
                         Nice to meet you! 
                         <br /><br />
                         I'm a teacher, engineer, and a musician currently in my 4th year pursuing a Computer Engineering B.S. degree and a minor in Electronic Music. I'm expecting to graduate in June 2025.
