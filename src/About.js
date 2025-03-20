@@ -17,14 +17,14 @@ function About() {
                 <div className="left-col">
                     <h1 className="name">Raphael Huang</h1>
                 </div>
-                <div className="right-col">
-                    <i className="title"><b>Computer Engineering Undergrad at UC Santa Cruz</b></i>
+                <div className="right-col right-col-title">
+                    <i><b className="title">Computer Engineering Undergrad at UC Santa Cruz</b></i>
                 </div>
             </div>
 
             <div className="content-row">
-                <div className="left-col">
-                    <img src={require("./img/about.jpg")} style={{ width: "28vw" }} className="profile-pic" alt="profile" />
+                <div className="left-col img-container">
+                    <img src={require("./img/about.jpg")} className="profile-pic" alt="profile" />
                 </div>
                 <div className="right-col">
                     <p className="main-body">
