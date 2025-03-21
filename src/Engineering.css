@@ -1,0 +1,62 @@
+.main-container-engi {
+    padding: 2vh 2vw;
+    margin: 0;
+    position: relative;
+    width: 70vw;
+}
+
+.fpga-img {
+    width: 50vw;
+    transform: translate(70vw, 10vh);
+    position: absolute;
+}
+
+.section-heading {
+    margin: 0.3rem 0 0.3rem 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+}
+
+.section-heading:hover {
+    background-color: #e0e0e0;
+}
+
+.collapsible-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.collapsible-content.expanded {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.indent-level-1 {
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.indent-level-2 {
+    margin-left: 3rem;
+    margin-top: 1rem;
+}
+
+.indent-level-3 {
+    margin-left: 0rem;
+    margin-top: 1rem;
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0.5rem 0;
+}
+
+.project-list {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
