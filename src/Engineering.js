@@ -34,9 +34,10 @@ function Engineering() {
         <div className={`collapsible-content ${activeSection === "hardware" ? "expanded" : ""}`} >
           <div className="indent-level-1">
             <p className="description">
-              My journey in hardware has been focused on FPGA development, ASIC design,
+              On the hardware side of things, I'm interested in FPGA development, ASIC design,
               VLSI, and computer architecture. I have built projects in Verilog and
-              SystemVerilog, and I possess a strong understanding of RISC-V architectures
+              SystemVerilog, worked with Xilinx Vivado and open-source FPGA toolchains,
+              and I possess a strong understanding of RISC-V architectures
               as well as the OpenROAD VLSI toolchain.
             </p>
 
@@ -45,14 +46,14 @@ function Engineering() {
               <p className="description">
                 I've been working with Xilinx FPGAs using Vivado and have hands-on
                 experience with writing and verifying designs in Verilog/SystemVerilog.
-                I also have exposure to open-source toolflows (e.g., Yosys, nextpnr)
-                and RISC-V-based SoC overlays.
+                I also have exposure to open-source toolflows (e.g., Yosys, Verilator)
+                and sound synthesis using FPGAs.
               </p>
 
               <div className="indent-level-3">
                 <ul className="description project-list">
-                  <li>FPGA-based RISC-V SoC (Placeholder)</li>
-                  <li>Verilator + SystemVerilog Example (Placeholder)</li>
+                  <li><a href="https://github.com/rphlhuang/vivaldi">Vivaldi</a>, a mini FPGA synthesizer for the Nexys Video Board (Artix-7 from Xilinx)</li>
+                  <li>A simple <a href="https://github.com/rphlhuang/FPGA-UART-ALU">FPGA ALU</a> that communicates over UART, targeting the iCEBreaker v1.0b</li>
                 </ul>
               </div>
             </div>
@@ -60,16 +61,15 @@ function Engineering() {
             <div className="indent-level-2">
               <h3>ASIC Design & Computer Architecture</h3>
               <p className="description">
-                Recently, I've participated in designing and taping out an ASIC using
-                open-source flows like OpenLane. I'm fascinated by the entire stack of VLSI
-                design, from HDL coding to physical layout, and the intricacies of RISC-V
-                CPU cores.
+                I've taken classes and participated in designing and taping out an ASIC using
+                the open-source OpenROAD VLSI toolchain. I'm also familiar with RISC-V architectures
+                and have worked on designing and optimizing embedded-class RISC-V cores.
               </p>
 
               <div className="indent-level-3">
                 <ul className="description project-list">
-                  <li>Tiny Tapeout ASIC (Placeholder)</li>
-                  <li>OpenROAD Physical Design Flow (Placeholder)</li>
+                  <li>Participated in <a href="https://tinytapeout.com/runs/tt09/">Tiny Tapeout 9</a></li>
+                  <li>Worked on a <a href="/IBEX-core-opt.pdf" target="_blank" rel="noopener noreferrer"> group project</a> optimizing the Ibex RISC-V core (from lowRISC) using OpenLane2</li>
                 </ul>
               </div>
             </div>
@@ -85,27 +85,12 @@ function Engineering() {
           <div className="indent-level-1">
             <p className="description">
               On the software side, I'm interested in leveraging heterogeneous computing
-              platforms (CPUs, GPUs, FPGAs) to accelerate AI/ML and data analytics tasks.
-              I'm fluent in C, Python, and can integrate solutions with front-end
-              technologies like React.
+              platforms (CPUs, GPUs, FPGAs) to accelerate AI/ML. I'm also interested 
+              and experience with data analytics and visualization.
+              I'm fluent in C, Python, and JS/HTML/CSS, and can integrate backend code with
+              frontends using React and Electron.
             </p>
 
-            <div className="indent-level-2">
-              <h3>Heterogeneous Computing</h3>
-              <p className="description">
-                My work focuses on optimizing AI/ML workflows by distributing workloads
-                across different hardware accelerators. Combining FPGA-based offloading
-                with CPU/GPU resources can lead to significant speed-ups for inference
-                and training.
-              </p>
-
-              <div className="indent-level-3">
-                <ul className="description project-list">
-                  <li>FPGA-Accelerated TensorFlow Kernel (Placeholder)</li>
-                  <li>Multi-GPU Data Pipeline (Placeholder)</li>
-                </ul>
-              </div>
-            </div>
 
             <div className="indent-level-2">
               <h3>Web Development & Data Visualization</h3>
@@ -118,11 +103,28 @@ function Engineering() {
 
               <div className="indent-level-3">
                 <ul className="description project-list">
-                  <li>React-based Data Viz Dashboard (Placeholder)</li>
-                  <li>Flask + React AI Web App (Placeholder)</li>
+                  <li>This website! </li>
                 </ul>
               </div>
             </div>
+
+            <div className="indent-level-2">
+              <h3>Heterogeneous Computing</h3>
+              <p className="description">
+                I'm interested in optimizing AI/ML workflows by distributing workloads
+                to hardware accelerators. Working on using my experience 
+                with TensorFlow and PyTorch to accelerate training and inference
+                in heterogeneous systems.
+              </p>
+
+              {/* <div className="indent-level-3">
+                <ul className="description project-list">
+                  <li>FPGA-Accelerated TensorFlow Kernel (Placeholder)</li>
+                  <li>Multi-GPU Data Pipeline (Placeholder)</li>
+                </ul>
+              </div> */}
+            </div>
+
           </div>
         </div>
       </div>
