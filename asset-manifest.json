@@ -1,18 +1,30 @@
 {
   "files": {
-    "main.css": "/static/css/main.35f9a35e.css",
-    "main.js": "/static/js/main.acce7969.js",
-    "static/js/453.52a48e72.chunk.js": "/static/js/453.52a48e72.chunk.js",
+    "main.css": "/static/css/main.1410be78.css",
+    "main.js": "/static/js/main.0ebdfc2f.js",
+    "static/js/453.ee9775be.chunk.js": "/static/js/453.ee9775be.chunk.js",
     "static/media/readme.jpg": "/static/media/readme.de1ecda021be50c59d49.jpg",
     "static/media/img4.jpg": "/static/media/img4.b7f35f2300060c874444.jpg",
     "static/media/img3.jpg": "/static/media/img3.9f2af541cfbb4c8a05e4.jpg",
+    "static/media/cse100_4.jpeg": "/static/media/cse100_4.24c07987bed07278be10.jpeg",
+    "static/media/cse100_3.jpeg": "/static/media/cse100_3.ed914d1646171706a4ab.jpeg",
     "static/media/awe.jpg": "/static/media/awe.657c503de3377bd316a7.jpg",
     "static/media/img2.jpg": "/static/media/img2.4748e1062545876dd006.jpg",
+    "static/media/stemed_1.jpg": "/static/media/stemed_1.43484660761f47c6c170.jpg",
+    "static/media/stemed_4.png": "/static/media/stemed_4.831a983edb2cc28ef0a2.png",
     "static/media/img3small.jpg": "/static/media/img3small.080a326cf6996ce91186.jpg",
+    "static/media/stemed_3.jpg": "/static/media/stemed_3.ff1e0061c481ed3a185e.jpg",
+    "static/media/cse100_1.png": "/static/media/cse100_1.54978d4d1c525e17f7ac.png",
     "static/media/fpga.jpg": "/static/media/fpga.c48a9907509251640d2e.jpg",
+    "static/media/csed_1.jpg": "/static/media/csed_1.f30a8d7529fda126c131.jpg",
+    "static/media/csed_2.jpg": "/static/media/csed_2.4a12dd8d825524382f7b.jpg",
+    "static/media/csed_4.png": "/static/media/csed_4.2add8fd9f46e79bf4196.png",
     "static/media/readmesmall.jpg": "/static/media/readmesmall.c6ce7b0419b76eee6fe6.jpg",
     "static/media/img2small.jpg": "/static/media/img2small.4122d137624ca6521320.jpg",
     "static/media/img4small.jpg": "/static/media/img4small.f47da3b3701c642e5d96.jpg",
+    "static/media/csed_3.jpg": "/static/media/csed_3.20f421f381f6f2b06f17.jpg",
+    "static/media/cse100_2.png": "/static/media/cse100_2.3fa74a980d1d635ce29f.png",
+    "static/media/stemed_2.jpg": "/static/media/stemed_2.0ee3ee1a2612b5f07dd9.jpg",
     "static/media/img1.jpg": "/static/media/img1.34293dd5dc4fbf78bfbd.jpg",
     "static/media/about.jpg": "/static/media/about.eef3856fc96a80adf4a4.jpg",
     "static/media/img1small.jpg": "/static/media/img1small.32b956b47b47c0a1b5fe.jpg",
@@ -20,12 +32,12 @@
     "static/media/linkedin.png": "/static/media/linkedin.5f2f1c09e0e24b438580.png",
     "static/media/email.png": "/static/media/email.edde96781f1253399d92.png",
     "index.html": "/index.html",
-    "main.35f9a35e.css.map": "/static/css/main.35f9a35e.css.map",
-    "main.acce7969.js.map": "/static/js/main.acce7969.js.map",
-    "453.52a48e72.chunk.js.map": "/static/js/453.52a48e72.chunk.js.map"
+    "main.1410be78.css.map": "/static/css/main.1410be78.css.map",
+    "main.0ebdfc2f.js.map": "/static/js/main.0ebdfc2f.js.map",
+    "453.ee9775be.chunk.js.map": "/static/js/453.ee9775be.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.35f9a35e.css",
-    "static/js/main.acce7969.js"
+    "static/css/main.1410be78.css",
+    "static/js/main.0ebdfc2f.js"
   ]
 }
