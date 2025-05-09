@@ -34,11 +34,11 @@ function CustomNavbar() {
                 </div>
             </div>
 
-            <div className="navbarElem">
+            {/* <div className="navbarElem">
                 <div className="navbarElemText">
                 <Link to="/music" id="link"> music </Link>
                 </div>
-            </div>
+            </div> */}
 
         </div>
     );

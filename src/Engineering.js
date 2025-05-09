@@ -29,7 +29,7 @@ function Engineering() {
         <img src={require("./img/fpga.jpg")} className="fpga-img" alt="iCEBreaker FPGA"/>
 
         <h1 className="section-heading" onClick={() => handleToggleSection("hardware")} >
-          Hardware
+          Computer Engineering + Hardware Design
         </h1>
         <div className={`collapsible-content ${activeSection === "hardware" ? "expanded" : ""}`} >
           <div className="indent-level-1">
@@ -78,7 +78,7 @@ function Engineering() {
 
         <div style={{display: "flex", alignItems: "flex-end"}}>
             <h1 className="section-heading" onClick={() => handleToggleSection("software")}>
-            Software
+            Software Engineering
             </h1> <p className="click-me">(expand me!)</p>
         </div>
         <div className={`collapsible-content ${ activeSection === "software" ? "expanded" : ""}`} >

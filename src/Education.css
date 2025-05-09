@@ -1,0 +1,123 @@
+.main-container-edu {
+    margin: 10vh 30vw 20vh 30vw;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.main-container-edu p {
+    padding: 1vh 0 1vh 0;
+    transition: position 0.4s ease-in-out;
+}
+
+.main-container-edu p.move-to-top {
+    position: inherit;
+}
+
+.main-container-edu h2:hover {
+    background-color: #e0e0e0;
+}
+.main-container-edu h2 {
+    font-weight: normal;
+}
+
+.background-images {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0;
+    padding: 0;
+    z-index: -1;
+}
+
+.background-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+    border-radius: 0;
+}
+
+.content-overlay {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    max-height: 80vh;
+    overflow: hidden;
+}
+
+.experience-details {
+    margin-top: 20px;
+    text-align: left;
+    max-height: calc(80vh - 100px);
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Add custom scrollbar styling */
+.experience-details::-webkit-scrollbar {
+    width: 8px;
+}
+
+.experience-details::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.experience-details::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.experience-details::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.experience-details h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    margin-top: 25px;
+    color: #333;
+}
+
+.experience-details h3:first-child {
+    margin-top: 0;
+}
+
+.experience-details p {
+    line-height: 1.6;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.experience-details a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.experience-details a:hover {
+    text-decoration: underline;
+}
+
+.experience-details ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+.experience-details li {
+    line-height: 1.8;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.experience-details li:last-child {
+    margin-bottom: 0;
+}
