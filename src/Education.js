@@ -17,9 +17,11 @@ import stemed_4 from './img/stemed_4.png';
 function Education() {
     const [activeSection, setActiveSection] = useState("none");
     const [expanded, setExpanded] = useState(false);
+    const [firstTime, setFirstTime] = useState(true);
     const handleLabelClick = (section) => {
         setActiveSection(activeSection === section ? "none" : section);
         setExpanded(true);
+        setFirstTime(false);
         console.log("Switching to section " + section);
     };
     return(
@@ -52,7 +54,9 @@ function Education() {
                 <>
                     <div className="main-container-edu">
                         <h1>STEM Education</h1>
-                        <h2 onClick={() => handleLabelClick("chip-design")}>1 year of experience in hardware/chip design education</h2>
+                        {firstTime && (<><h2 onClick={() => handleLabelClick("chip-design")}>1 year of experience in hardware/chip design education</h2><i>(expand me!)</i></>)}
+                        {!firstTime && (<h2 onClick={() => handleLabelClick("chip-design")}>1 year of experience in hardware/chip design education</h2>)} 
+
                         <h2 onClick={() => handleLabelClick("cs-ed")}>2 years of experience in CS education</h2>        
                         <h2 onClick={() => handleLabelClick("stem-ed")}>7 years of experience in STEM education</h2>       
                         <h1>Music Education</h1>
