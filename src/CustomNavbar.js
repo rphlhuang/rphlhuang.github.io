@@ -9,11 +9,7 @@ function CustomNavbar() {
             <img src={logoR} className="logoR" alt="logo"/>
             </div>
 
-            {/* <div className="navbarElem"> 
-                <div className="navbarElemText"> 
-                    <Link to="/blog" id="link"> blog </Link>
-                </div>
-            </div> */}
+
 
             <div className="navbarElem">
                 <div className="navbarElemText">
@@ -33,6 +29,12 @@ function CustomNavbar() {
                 <Link to="/teaching" id="link"> teaching </Link>
                 </div>
             </div>
+
+            {/* <div className="navbarElem"> 
+                <div className="navbarElemText"> 
+                    <Link to="/blog" id="link"> blog </Link>
+                </div>
+            </div> */}
 
             {/* <div className="navbarElem">
                 <div className="navbarElemText">

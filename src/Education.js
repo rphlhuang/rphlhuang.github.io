@@ -32,8 +32,8 @@ function Education() {
             <button 
                 style={{
                     position: 'absolute',
-                    left: '20vw',
-                    marginTop: '10vh',
+                    left: '10vw',
+                    marginTop: '5vh',
                     padding: '8px 16px',
                     backgroundColor: 'white',
                     border: '1px solid #ccc',
@@ -53,14 +53,22 @@ function Education() {
             {!expanded && (
                 <>
                     <div className="main-container-edu">
-                        <h1>STEM Education</h1>
-                        {firstTime && (<><h2 onClick={() => handleLabelClick("chip-design")}>1 year of experience in hardware/chip design education</h2><i>(expand me!)</i></>)}
-                        {!firstTime && (<h2 onClick={() => handleLabelClick("chip-design")}>1 year of experience in hardware/chip design education</h2>)} 
+                        <div className="background-images">
+                            <img src={csed_1} alt="CS Education 1" />
+                            <img src={csed_2} alt="CS Education 2" />
+                            <img src={cse100_1} alt="CS Education 3" />
+                            <img src={cse100_2} alt="CS Education 4" />
+                        </div>
+                        <div className="content-overlay">
+                            <h1>STEM Education</h1>
+                            {firstTime && (<><h2 onClick={() => handleLabelClick("chip-design")}>1 year of experience in hardware/chip design education</h2><i>(expand me!)</i></>)}
+                            {!firstTime && (<h2 onClick={() => handleLabelClick("chip-design")}>1 year of experience in hardware/chip design education</h2>)} 
 
-                        <h2 onClick={() => handleLabelClick("cs-ed")}>2 years of experience in CS education</h2>        
-                        <h2 onClick={() => handleLabelClick("stem-ed")}>7 years of experience in STEM education</h2>       
-                        <h1>Music Education</h1>
-                        <h2>2 years of experience teaching private piano lessons</h2>       
+                            <h2 onClick={() => handleLabelClick("cs-ed")}>2 years of experience in CS education</h2>        
+                            <h2 onClick={() => handleLabelClick("stem-ed")}>7 years of experience in STEM education</h2>       
+                            <h1>Music Education</h1>
+                            <h2>2 years of experience teaching private piano lessons</h2>       
+                        </div>
                     </div>
                 </>
             )}

@@ -1,7 +1,9 @@
 .main-container-edu {
-    margin: 10vh 30vw 20vh 30vw;
+    margin: 10vh auto 20vh;       /* center horizontally */
+    max-width: 80vw;              /* container width you can adjust */
+    display: flex;
+    justify-content: center;
     align-items: center;
-    text-align: center;
     position: relative;
 }
 
@@ -16,9 +18,11 @@
 
 .main-container-edu h2:hover {
     background-color: #e0e0e0;
+    cursor: pointer;
 }
 .main-container-edu h2 {
     font-weight: normal;
+    padding: 1vh 1vw 1vh 1vw;
 }
 
 .background-images {
@@ -45,12 +49,18 @@
 
 .content-overlay {
     position: relative;
+    flex: 1;                      /* fill the container’s width */
+    max-width: 70%;              /* prevent overflow */
     z-index: 1;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 8px;
     max-height: 80vh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* center headings/buttons horizontally */
+    text-align: center;      /* center inline text */
 }
 
 .experience-details {
@@ -59,6 +69,7 @@
     max-height: calc(80vh - 100px);
     overflow-y: auto;
     padding-right: 10px;
+    align-self: stretch;     /* let the scroll section fill the overlay’s width */
 }
 
 /* Add custom scrollbar styling */
