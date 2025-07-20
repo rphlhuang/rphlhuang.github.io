@@ -60,3 +60,42 @@
     list-style-type: disc;
     margin-left: 2rem;
 }
+
+@media (max-width: 600px) {
+  /* reset indents & lists… */
+  .indent-level-1,
+  .indent-level-2,
+  .indent-level-3 { margin-left: 0; }
+  .project-list {
+    margin-left: 0;
+    padding-left: 0;
+    list-style-position: inside;
+  }
+
+  /* make the outer container full width on mobile */
+  .main-container-engi {
+    width: 90vw;
+    padding-left: 5vw;    /* optional: reduce side padding */
+  }
+
+  /* let each collapsible panel fill that width */
+  .collapsible-content {
+    /* fill container width on mobile */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* headings remain inline‐sized and click‐where‐they‐are */
+  .section-heading {
+    display: inline-block;
+    padding: 0 0 0 0;
+    width: 70vw;
+  }
+
+  /* FPGA image tweak if needed… */
+  .fpga-img {
+    width: 80vw;
+    transform: translate(70vw, -5vh);
+    z-index: -1;
+  }
+}

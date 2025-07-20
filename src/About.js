@@ -18,7 +18,7 @@ function About() {
                     <h1 className="name">Raphael Huang</h1>
                 </div>
                 <div className="right-col right-col-title">
-                    <i><b className="title">Computer Engineering Undergrad at UC Santa Cruz</b></i>
+                    <i><b className="title">Computer Engineering M.S. at UC Santa Cruz</b></i>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@ function About() {
                     <p className="main-body">
                         Nice to meet you! 
                         <br /><br />
-                        I'm a teacher, engineer, and a musician currently in my 4th year pursuing a Computer Engineering B.S. degree and a minor in Electronic Music. I'm expecting to graduate in June 2025.
+                        I'm a teacher, engineer, and a musician pursuing a Master's in Computer Science and Engineering. I'm expecting to graduate in March 2026.
                         On the engineering side, I'm interested in chip design, FPGA/ASIC development, and making hardware design education more accessible for all.
                         On the music side, I like working in recording engineering, sound design, and music production.
                         <br /><br />

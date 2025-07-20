@@ -75,11 +75,12 @@ function Engineering() {
             </div>
           </div>
         </div>
-
+        <hr />
         <div style={{display: "flex", alignItems: "flex-end"}}>
             <h1 className="section-heading" onClick={() => handleToggleSection("software")}>
-            Software Engineering
-            </h1> <p className="click-me">(expand me!)</p>
+              Software Engineering
+            </h1>
+            <p className="click-me">(expand me!)</p>
         </div>
         <div className={`collapsible-content ${ activeSection === "software" ? "expanded" : ""}`} >
           <div className="indent-level-1">

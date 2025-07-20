@@ -132,3 +132,12 @@
 .experience-details li:last-child {
     margin-bottom: 0;
 }
+
+@media (max-width: 600px) {
+    .main-container-edu {
+        max-width: 100vw;
+    }
+    .content-overlay {
+        max-height: 100vh;
+    }
+}
