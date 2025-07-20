@@ -1,12 +1,34 @@
+import React, { useState } from "react";
+import { useNavigate, Link } from 'react-router-dom';
 import logoR from "./img/logoR.png";
 import "./Blog.css";
-import { Link } from 'react-router-dom';
 
 function CustomNavbar() {
+  const [clickCount, setClickCount] = useState(0);
+  const navigate = useNavigate();
+
+  const onLogoClick = () => {
+    setClickCount(c => {
+      const next = c + 1;
+      if (next === 3) {
+        navigate('/blog');
+        return 0;
+      }
+      return next;
+    });
+  };
+
     return (
         <div className="navbar">
             <div>
-            <img src={logoR} className="logoR" alt="logo"/>
+            <img
+            src={logoR}
+            className="logoR"
+            alt="logo"
+            draggable={false}
+            onClick={onLogoClick}
+            style={{ cursor: 'pointer' }}
+            />
             </div>
 
 
@@ -20,15 +42,21 @@ function CustomNavbar() {
 
             <div className="navbarElem">
                 <div className="navbarElemText">
-                <Link to="/computers" id="link"> computers </Link>
+                <Link to="/computers" id="link"> engineering </Link>
                 </div>
             </div>
 
             <div className="navbarElem">
                 <div className="navbarElemText">
-                <Link to="/teaching" id="link"> teaching </Link>
+                <Link to="/teaching" id="link"> education </Link>
                 </div>
             </div>
+{/* 
+            <div className="navbarElem">
+                <div className="navbarElemText">
+                <Link to="/teaching" id="link"> /hardware_education </Link>
+                </div>
+            </div> */}
 
             {/* <div className="navbarElem"> 
                 <div className="navbarElemText"> 

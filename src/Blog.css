@@ -7,9 +7,9 @@
 .logoR {
   display: block;
   height: 100%;
-  pointer-events: none;
   user-select: none;
-  filter:invert(1)
+  -webkit-user-drag: none;
+  filter: invert(1);
 }
 
 .navbar {
