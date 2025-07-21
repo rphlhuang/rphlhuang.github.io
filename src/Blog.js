@@ -3,12 +3,19 @@ import Icon from './Icon.js'
 import Window from './Window.js'
 import CustomNavbar from './CustomNavbar.js'
 import { v4 as uuidv4 } from 'uuid';
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import CRTChromaFilter from './CRTChromaFilter.js'
+import useKonami from "./useKonami";
+
 
 function Blog() {
 
+  const [crtOn, setCrtOn] = useState(false);
   const [windows, setWindows] = useState([]);
   const [activeWindowId, setActiveWindowId] = useState(null);
+
+  const toggleCRT = useCallback(() => setCrtOn(prev => !prev), []);
+  useKonami(toggleCRT);
 
   const closeWindow = (id) => {
     setWindows(prevWindows =>
@@ -33,11 +40,14 @@ function Blog() {
   const folderImg = require("./img/folderIcon.png");
   
   return (
+    
     <div className="App">
+    {crtOn && <CRTChromaFilter />}
     <CustomNavbar />
 
     <div className="desktop">
-      <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name={"jrnl"}/>
+      <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name="jrnl"/>
+      <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name="music"/>
       {windows.map(win => (
         win.isOpen && (
           <Window

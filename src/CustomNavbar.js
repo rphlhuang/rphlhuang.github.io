@@ -4,6 +4,7 @@ import logoR from "./img/logoR.png";
 import "./Blog.css";
 
 function CustomNavbar() {
+// eslint-disable-next-line no-unused-vars
   const [clickCount, setClickCount] = useState(0);
   const navigate = useNavigate();
 

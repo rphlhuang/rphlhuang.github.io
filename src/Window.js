@@ -16,7 +16,6 @@ function Window({id, title, onClose, onContainerClick, onContainerDrag, active})
         height: '100%'
     };
 
-
     // states
     const [contents, setContents] = useState([]);
     const contentRef = useRef(null);
