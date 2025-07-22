@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from 'react-router-dom';
 import logoR from "./img/logoR.png";
-import "./Blog.css";
+import "./blog/Blog.css";
 
 function CustomNavbar() {
 // eslint-disable-next-line no-unused-vars

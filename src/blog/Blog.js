@@ -1,7 +1,7 @@
 import './Blog.css';
 import Icon from './Icon.js'
 import Window from './Window.js'
-import CustomNavbar from './CustomNavbar.js'
+import CustomNavbar from '../CustomNavbar.js'
 import { v4 as uuidv4 } from 'uuid';
 import { useState, useCallback } from "react";
 import CRTChromaFilter from './CRTChromaFilter.js'

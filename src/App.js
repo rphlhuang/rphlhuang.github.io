@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import About from './About';
-import Blog from './Blog';
+import Blog from './blog/Blog';
 import Engineering from './Engineering';
 import Music from './Music';
 import Education from './Education';

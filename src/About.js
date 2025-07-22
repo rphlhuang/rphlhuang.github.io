@@ -1,4 +1,4 @@
-import "./Blog.css"
+import "./blog/Blog.css"
 import "./About.css"
 import CustomNavbar from './CustomNavbar.js'
 import email from "./img/email.png";

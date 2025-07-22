@@ -128,14 +128,15 @@
     }
 
     .icon {
-        width: 10vw;
-        height: 10vw;
+        width: 15vw;
+        height: 15vw;
         filter: brightness(0%);
     }
     
     .icon-linkedin {
-        width: 10.3vw;
-        height: 10.3vw;
+        transform: translateY(-0.4vh);
+        width: 17.5vw;
+        height: 17.5vw;
         filter: brightness(0%);
     }
     
