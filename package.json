@@ -15,7 +15,7 @@
     "react-rnd": "^10.4.12",
     "react-router-dom": "^7.4.0",
     "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4"  
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
