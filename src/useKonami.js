@@ -1,16 +1,15 @@
 import { useEffect, useRef } from "react";
 
-/** Runs `onSuccess` the moment the user finishes ↑↑↓↓←→←→ B A */
-export default function useKonami(onSuccess) {
-  const indexRef = useRef(0);
-  const KONAMI = [
+const KONAMI = [
     "ArrowUp", "ArrowUp",
     "ArrowDown", "ArrowDown",
     "ArrowLeft", "ArrowRight",
     "ArrowLeft", "ArrowRight",
-    "b", "a",
-    "Enter"
-  ];
+    "b", "a"
+];
+
+export default function useKonami(onSuccess) {
+  const indexRef = useRef(0);
 
   useEffect(() => {
     function handler(e) {

@@ -8,7 +8,7 @@ export default function CRTChromaFilter() {
     style.textContent = `
       html, body, #root {
         height: 100%;
-        filter: url(#crt-chroma) contrast(1.1) brightness(0.9);
+        filter: url(#crt-chroma) contrast(1.4) brightness(0.68);
       }
 
       /* scan-lines */
@@ -25,7 +25,8 @@ export default function CRTChromaFilter() {
           rgba(0,0,0,0)   3px
         );
         mix-blend-mode: multiply;
-        animation: flicker 60ms step-start infinite;
+
+        animation: crtFlicker 250ms steps(1) infinite;
         z-index: 9999;
       }
 
@@ -36,15 +37,19 @@ export default function CRTChromaFilter() {
         inset: 0;
         pointer-events: none;
         background: radial-gradient(circle at center,
-            rgba(0,0,0,0) 80%,
+            rgba(0,0,0,0) 87%,
             rgba(0,0,0,0.1) 100%);
         z-index: 9998;
       }
 
-      @keyframes flicker {
-        0%, 42%, 100% { opacity: 1; }
-        43%           { opacity: 0.93; }
-      }
+
+    @keyframes crtFlicker {
+    0%   { opacity: 1;   }
+    30%  { opacity: 0.98;}
+    60%  { opacity: 1;   }
+    90%  { opacity: 0.9; }   /* occasional deeper dip */
+    100% { opacity: 1;   }
+    }
     `;
     document.head.appendChild(style);
 
@@ -61,21 +66,24 @@ export default function CRTChromaFilter() {
       style={{ position: "absolute", width: 0, height: 0 }}
     >
       <defs>
-        <filter id="crt-chroma">
-          <feColorMatrix
-            in="SourceGraphic"
-            type="matrix"
-            values="
-              1 0 0 0 0
-              0 1 0 0 0
-              0 0 1 0 0
-              0 0 0 1 0"
-            result="base"
-          />
-          <feOffset in="base" dx="0.3"  dy="0" result="red" />
-          <feOffset in="base" dx="0.3" dy="0" result="blue" />
-          <feBlend  in="red"  in2="blue" mode="screen" result="rgb" />
-          <feBlend  in="rgb"  in2="base" mode="screen" />
+        <filter id="crt-chroma" colorInterpolationFilters="sRGB">
+            <feOffset in="SourceGraphic" dx="0" dy="-0.5" result="redShift"/>
+            <feComponentTransfer in="redShift" result="red">
+                <feFuncR type="identity"/>
+                <feFuncG type="table" tableValues="0 0"/>   {/* nuke G */}
+                <feFuncB type="table" tableValues="0 0"/>   {/* nuke B */}
+            </feComponentTransfer>
+
+            <feOffset in="SourceGraphic" dx="0" dy="0.5" result="blueShift"/>
+            <feComponentTransfer in="blueShift" result="blue">
+                <feFuncR type="table" tableValues="0 0"/>   {/* nuke R */}
+                <feFuncG type="identity"/>                  {/* KEEP G ✅ */}
+                <feFuncB type="identity"/>                  {/* keep B */}
+            </feComponentTransfer>
+
+            <feBlend in="red" in2="blue" mode="screen" result="rb"/>
+
+            <feBlend in="SourceGraphic" in2="rb" mode="screen"/>
         </filter>
       </defs>
     </svg>

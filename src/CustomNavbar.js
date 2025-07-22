@@ -11,10 +11,15 @@ function CustomNavbar() {
   const onLogoClick = () => {
     setClickCount(c => {
       const next = c + 1;
-      if (next === 3) {
-        navigate('/blog');
-        return 0;
-      }
+          if (next === 3) {               // first triple‑click → go to blog
+            navigate('/blog');
+        } else if (next === 6) {        // second triple‑click → open image
+            window.open(
+                'https://static.wikia.nocookie.net/konamiverse/images/7/70/Konami_Code_-_02.png/revision/latest?cb=20190618022020',
+                '_blank'
+            );
+            return 0;                     // reset so you can do the sequence again
+        }
       return next;
     });
   };
