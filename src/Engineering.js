@@ -77,7 +77,7 @@ function Engineering() {
         </div>
         <hr />
         <div style={{display: "flex", alignItems: "flex-end"}}>
-            <h1 className="section-heading" onClick={() => handleToggleSection("software")}>
+            <h1 className="section-heading" id="sw_engi_h1" onClick={() => handleToggleSection("software")}>
               Software Engineering
             </h1>
             <p className="click-me">(expand me!)</p>
