@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ImageOverlay.css";
+import {IMAGE_CONTEXTS, INDEX_MAP} from "./folders.js"
 
 function OverlayTextBlock ({ text }) {
     return (
@@ -7,8 +8,7 @@ function OverlayTextBlock ({ text }) {
     );
 }
 
-function ImageOverlay({ isVisible, postName, onClose, handleAnimationEnd }) {
-    
+function ImageOverlay({ isVisible, postName, folderKey, onClose, handleAnimationEnd }) {    
     // load images, json files dynamically
     const [jsonData, setJsonData] = useState([]);
 
@@ -24,14 +24,26 @@ function ImageOverlay({ isVisible, postName, onClose, handleAnimationEnd }) {
     const [currentPostObject, setCurrentPostObject] = useState(null);
     const [imageSrc, setImageSrc] = useState(null);
     useEffect(() => {
-        const images = require.context('./img/photos', false, /\.(png|jpe?g|svg)$/);
+        // const images = require.context('./img/photos', false, /\.(png|jpe?g|svg)$/);
 
         if (postName === null) return;
         const foundObject = jsonData.find(post => post.title === postName);
 
+        if (!foundObject) return;
+
+        let images = folderKey ? IMAGE_CONTEXTS[folderKey] : null;
+        if (!images) {
+        const inferredKey = Object.keys(INDEX_MAP).find(
+            (k) => INDEX_MAP[k] && INDEX_MAP[k][postName]
+        );
+        images = inferredKey ? IMAGE_CONTEXTS[inferredKey] : null;
+        }
+        if (!images) return;
+
         setCurrentPostObject(foundObject);
         setImageSrc(images(`./${foundObject.image}`));
-    }, [postName, jsonData])
+        
+    }, [postName, jsonData, folderKey])
 
     // wait until image is loaded before displaying overlay
     const [isLoaded, setIsLoaded] = useState(false);

@@ -112,6 +112,7 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
                 postName={selectedPost} 
                 onClose={closeOverlay} 
                 handleAnimationEnd={handleAnimationEnd}
+                folderKey={folderKey}
             />
         </>
     );

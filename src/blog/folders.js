@@ -5,7 +5,7 @@ import etcIndex from './index/etc_index.json';
 export const IMAGE_CONTEXTS = {
   jrnl: require.context('./img/photos', false, /\.(png|jpe?g|svg)$/),
   music: require.context('./img/photos', false, /\.(png|jpe?g|svg)$/),
-  etc: require.context('./img/photos', false, /\.(png|jpe?g|svg)$/),
+  etc: require.context('./img/etc', false, /\.(png|jpe?g|svg)$/),
 };
 
 export const INDEX_MAP = {
