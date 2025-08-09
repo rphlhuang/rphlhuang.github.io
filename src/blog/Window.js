@@ -5,9 +5,9 @@ import { v4 as uuidv4 } from 'uuid';
 import ImageOverlay from './ImageOverlay.js';
 import Icon from "./Icon.js"
 import "./Window.css";
-import index from "./index.json"
+import {IMAGE_CONTEXTS, INDEX_MAP} from "./folders.js"
 
-function Window({id, title, onClose, onContainerClick, onContainerDrag, active}) {
+function Window({id, title, folderKey, onClose, onContainerClick, onContainerDrag, active}) {
     const style = {
         border: "solid 1px #ddd",
         background: "#f0f0f0",
@@ -50,26 +50,21 @@ function Window({id, title, onClose, onContainerClick, onContainerDrag, active})
         }
     };
 
-    // load images dynamically
     useEffect(() => {
-        setContents([]);
-        const images = require.context('./img/photos', false, /\.(png|jpe?g|svg)$/);
+        const ctx = IMAGE_CONTEXTS[folderKey];
+        const idx = INDEX_MAP[folderKey];
+        if (!ctx || !idx) return;
 
-        const loadImages = () => {
-            for (const [title, path] of Object.entries(index)) {
-                const newContents = {
-                        id: uuidv4(),
-                        name: String(title),
-                        thumbnail: images(`./${path}`),
-                        boundingSelector: ".desktop",
-                        onClick: () => handleImageClick(title)
-                };
-                console.log(newContents);
-                setContents(prevContents => [...prevContents, newContents]);
-            }
-        };
-        loadImages();
-    }, []); // empty dependency array, only runs once
+        const entries = Object.entries(idx);
+        setContents(entries.map(([name, file]) => ({
+            id: uuidv4(),
+            name,
+            thumbnail: ctx(`./${file}`),
+            boundingSelector: '.desktop',
+            onClick: () => handleImageClick(name),
+        })));
+    }, [folderKey]);
+
 
 
     // set image size and keep it that way
@@ -121,9 +116,6 @@ function Window({id, title, onClose, onContainerClick, onContainerDrag, active})
         </>
     );
 }
-
-
-
 
 
 export default Window;

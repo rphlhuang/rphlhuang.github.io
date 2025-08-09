@@ -31,6 +31,7 @@ function Blog() {
     const newWindow = {
       id: uuidv4(),
       title: name,
+      folderKey: name,
       content: 'Window Content',
       isOpen: true
     };
@@ -48,6 +49,7 @@ function Blog() {
     <div className="desktop">
       <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name="jrnl"/>
       <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name="music"/>
+      <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name="etc"/>
       {windows.map(win => (
         win.isOpen && (
           <Window
@@ -59,6 +61,7 @@ function Blog() {
             onContainerClick={bringToFront}
             onContainerDrag={bringToFront}
             active={win.id === activeWindowId}
+            folderKey={win.folderKey}
           />
         )
       ))}
