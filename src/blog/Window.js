@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 import ImageOverlay from './ImageOverlay.js';
+import MusicOverlay from './MusicOverlay.js';
 import Icon from "./Icon.js"
 import "./Window.css";
 import {IMAGE_CONTEXTS, INDEX_MAP} from "./folders.js"
@@ -21,24 +22,33 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
     const contentRef = useRef(null);
     const [lockedSize, setLockedSize] = useState(null);
     const [selectedPost, setSelectedPost] = useState(null);
+    const [overlayType, setOverlayType] = useState(null);
 
     // overlay handlers
     const handleImageClick = (title) => {
         if (document.getElementById("overlay")) {
             document.getElementById("overlay").classList.remove("animateOut");
         }
-        if (document.getElementsByClassName("overlay-text-block")) {
-            const textBlocks = document.getElementsByClassName("overlay-text-block");
-            for (let i = 0; i < textBlocks.length; i++) {
-                textBlocks[i].classList.remove("animateFade");
+
+        if (folderKey === 'music') {
+            setOverlayType('music');
+        } else {
+            setOverlayType('image');
+            if (document.getElementsByClassName("overlay-text-block")) {
+                const textBlocks = document.getElementsByClassName("overlay-text-block");
+                for (let i = 0; i < textBlocks.length; i++) {
+                    textBlocks[i].classList.remove("animateFade");
+                }
             }
         }
+        
         setSelectedPost(title);
     };
 
     const handleAnimationEnd = (e) => {
         if (e.animationName === "slideLeft") {
             setSelectedPost(null);
+            setOverlayType(null);
         }
     }
 
@@ -107,13 +117,25 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
                 </div>
             </Rnd>
 
-            <ImageOverlay 
-                isVisible={!!selectedPost} // cast to bool
-                postName={selectedPost} 
-                onClose={closeOverlay} 
-                handleAnimationEnd={handleAnimationEnd}
-                folderKey={folderKey}
-            />
+            {overlayType === 'image' && (
+                <ImageOverlay 
+                    isVisible={!!selectedPost}
+                    postName={selectedPost} 
+                    onClose={closeOverlay} 
+                    handleAnimationEnd={handleAnimationEnd}
+                    folderKey={folderKey}
+                />
+            )}
+
+            {overlayType === 'music' && (
+                <MusicOverlay 
+                    isVisible={!!selectedPost}
+                    postName={selectedPost} 
+                    onClose={closeOverlay} 
+                    handleAnimationEnd={handleAnimationEnd}
+                    folderKey={folderKey}
+                />
+            )}
         </>
     );
 }

@@ -1,0 +1,84 @@
+.music-overlay .music-overlay-content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    gap: 20px;
+}
+
+.record-player-placeholder {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    min-width: 300px;
+}
+
+.track-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    overflow-y: auto;
+}
+
+.album-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    color: #1a1a1a;
+}
+
+.artist-name {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0 0 24px 0;
+    color: #555;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 16px;
+}
+
+.tracklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.track-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 8px;
+    border-bottom: 1px solid #eee;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.track-item:last-child {
+    border-bottom: none;
+}
+
+.track-item:hover {
+    background-color: #edebeb;
+    border-radius: 4px;
+}
+
+.track-title {
+    font-weight: 500;
+}
+
+.track-duration {
+    font-weight: 400;
+    color: #777;
+    font-family: 'monospace';
+}

@@ -1,0 +1,22 @@
+{
+    "title": "Grass is Green",
+    "artist": "Redeemer Music Makers",
+    "albumArt": "grass_is_green.jpg",
+    "tracks": [
+        {
+            "title": "Now the Green Blade Riseth",
+            "fileName": "NowTheGreenBladeRiseth.mp3",
+            "duration": "3:23"
+        },
+        {
+            "title": "Memory Box (The Burial)",
+            "fileName": "TheBurial.mp3",
+            "duration": "4:08"
+        },
+        {
+            "title": "Life in Desert Sands",
+            "fileName": "LifeInDesertSands.mp3",
+            "duration": "3:23"
+        }
+    ]
+}
