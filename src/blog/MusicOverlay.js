@@ -35,7 +35,7 @@ function MusicOverlay({ isVisible, postName, onClose, handleAnimationEnd }) {
                     <div className="record-player">
                         <div className="record">
                             <img
-                                src={require(`./img/${postData.albumArt}`)}
+                                src={require(`./img/album_art/${postData.albumArt}`)}
                                 alt="album art"
                                 className="album-art"
                             />
