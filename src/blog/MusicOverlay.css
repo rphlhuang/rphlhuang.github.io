@@ -1,41 +1,45 @@
 .music-overlay .music-overlay-content {
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
     width: 100%;
     height: 100%;
     padding: 20px;
-    gap: 20px;
+    gap: 40px; /* Increased gap */
+    overflow: hidden;
 }
 
 .record-player {
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 300px;
+    transform: translateX(-50%);
 }
 
 .record {
-    width: 250px;
-    height: 250px;
-    background-color: #000;
+    width: 600px; /* Larger outer circle */
+    height: 600px;
+    background: repeating-radial-gradient(circle, #444 0, #444 2px, #333 2px, #333 4px);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: spin 8s linear infinite;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    animation: spin 15s linear infinite;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    position: relative;
 }
 
 .album-art {
-    width: 150px;
-    height: 150px;
+    width: 180px; /* Smaller inner circle */
+    height: 180px;
     border-radius: 50%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    border: 12px solid #a98d69;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
 }
 
 @keyframes spin {
@@ -44,37 +48,25 @@
 }
 
 .track-info {
-    flex: 1;
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-color: #f7f7f7;
-    border-radius: 12px;
+    background-color: #fcfcfc;
+    border-radius: 10px;
     color: #333;
     font-family: 'Inter', sans-serif;
-    overflow-y: auto;
-}
-
-.album-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0;
-    color: #1a1a1a;
-}
-
-.artist-name {
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin: 0 0 24px 0;
-    color: #555;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 16px;
+    max-width: 45%;
+    height: auto;
+    max-height: 85%;
+    overflow: hidden;
 }
 
 .tracklist {
     list-style: none;
     padding: 0;
     margin: 0;
+    overflow-y: auto;
     flex-grow: 1;
 }
 
@@ -82,27 +74,106 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 8px;
-    border-bottom: 1px solid #eee;
-    font-size: 1rem;
-    transition: background-color 0.2s ease-in-out;
+    padding: 15px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1.1rem;
+    transition: background-color 0.2s;
+    cursor: pointer;
 }
 
-.track-item:last-child {
-    border-bottom: none;
+.track-item.selected {
+    background-color: #e0d9cf;
+    font-weight: bold;
 }
 
-.track-item:hover {
-    background-color: #edebeb;
-    border-radius: 4px;
+.track-item:hover:not(.selected) {
+    background-color: #f5f5f5;
 }
 
-.track-title {
-    font-weight: 500;
+.album-info {
+    padding: 20px 12px 10px;
+    text-align: center;
 }
 
-.track-duration {
+.album-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: #222;
+}
+
+.artist-name {
+    font-size: 1.2rem;
     font-weight: 400;
-    color: #777;
-    font-family: 'monospace';
+    color: #666;
+}
+
+.media-controls {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px 0;
+    border-top: 1px solid #f0f0f0;
+}
+
+.media-controls button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #333;
+    transition: color 0.2s;
+}
+
+.media-controls button:hover {
+    color: #000;
+}
+
+.media-controls button svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .music-overlay-content {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        padding-top: 80px; /* Push content down */
+    }
+
+    .record-player {
+        transform: translateX(0);
+        position: absolute;
+        top: -150px; /* Pull the record up, half off-screen */
+        z-index: 0;
+    }
+
+    .record {
+        width: 350px;
+        height: 350px;
+    }
+
+    .album-art {
+        width: 120px;
+        height: 120px;
+        border-width: 8px;
+    }
+
+    .track-info {
+        max-width: 90%;
+        max-height: 70%;
+        z-index: 1;
+        padding: 15px;
+    }
+
+    .album-title {
+        font-size: 1.5rem;
+    }
+
+    .artist-name {
+        font-size: 1rem;
+    }
 }
