@@ -34,11 +34,10 @@ function MusicOverlay({ isVisible, postName, onClose, handleAnimationEnd }) {
                 <div className="music-overlay-content">
                     <div className="record-player">
                         <div className="record">
-                            <img
-                                src={require(`./img/album_art/${postData.albumArt}`)}
-                                alt="album art"
+                            <div
                                 className="album-art"
-                            />
+                                style={{ backgroundImage: `url(${require(`./img/album_art/${postData.albumArt}`)})` }}
+                            ></div>
                         </div>
                     </div>
                     <div className="track-info">
