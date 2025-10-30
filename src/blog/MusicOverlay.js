@@ -32,16 +32,18 @@ function MusicOverlay({ isVisible, postName, onClose, handleAnimationEnd }) {
             <div className="overlay music-overlay" onAnimationEnd={handleAnimationEnd}>
                 <div className="overlay-toolbar" onClick={onClose}>⋘</div>
                 <div className="music-overlay-content">
-                    {/* We will add the spinning record here later */}
-                    <div className="record-player-placeholder">
-                         {/* Placeholder for Album Art */}
+                    <div className="record-player">
+                        <div className="record">
+                            <img
+                                src={require(`./img/${postData.albumArt}`)}
+                                alt="album art"
+                                className="album-art"
+                            />
+                        </div>
                     </div>
-
-                    {/* Right side with tracklist and info */}
                     <div className="track-info">
                         <h2 className="album-title">{postData.title}</h2>
                         <h3 className="artist-name">{postData.artist}</h3>
-                        
                         <ul className="tracklist">
                             {postData.tracks.map((track, index) => (
                                 <li key={index} className="track-item">
@@ -50,7 +52,6 @@ function MusicOverlay({ isVisible, postName, onClose, handleAnimationEnd }) {
                                 </li>
                             ))}
                         </ul>
-                         {/* We will add player controls here later */}
                     </div>
                 </div>
             </div>
