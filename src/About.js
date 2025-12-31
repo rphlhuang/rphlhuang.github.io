@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import "./blog/Blog.css"
 import "./About.css"
 import CustomNavbar from './CustomNavbar.js'
@@ -7,55 +8,103 @@ import linkedin from "./img/linkedin.png";
 
 
 function About() {
-  return (
-    <div className="App">
-        <CustomNavbar />
+    const [emailStatus, setEmailStatus] = useState('idle'); // 'idle' | 'visible' | 'fading'
+    const [showCopied, setShowCopied] = useState(false);
+    const emailStr = "rphlhuang" + String.fromCharCode(64) + "gmail.com";
 
-        <div className="main-container">
+    useEffect(() => {
+        if (emailStatus === 'visible') {
+            const timer = setTimeout(() => setEmailStatus('fading'), 2500);
+            return () => clearTimeout(timer);
+        }
+        if (emailStatus === 'fading') {
+            const timer = setTimeout(() => setEmailStatus('idle'), 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [emailStatus]);
 
-            <div className="intro-row">
-                <div className="left-col">
-                    <h1 className="name">Raphael Huang</h1>
-                </div>
-                <div className="right-col right-col-title">
-                    <i><b className="title">Computer Engineering M.S. at UC Santa Cruz</b></i>
-                </div>
-            </div>
+    useEffect(() => {
+        if (showCopied) {
+            const timer = setTimeout(() => setShowCopied(false), 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [showCopied]);
 
-            <div className="content-row">
-                <div className="left-col img-container">
-                    <img src={require("./img/about.jpg")} className="profile-pic" alt="profile" />
-                </div>
-                <div className="right-col">
-                    <p className="main-body">
-                        Nice to meet you! 
-                        <br /><br />
-                        I'm a teacher, engineer, and a musician pursuing a Master's in Computer Science and Engineering. I'm expecting to graduate in March 2026.
-                        On the engineering side, I'm interested in chip design, FPGA/ASIC development, and making hardware design education more accessible for all.
-                        On the music side, I like working in recording engineering, sound design, and music production.
-                        <br /><br />
-                        I'm currently working with Professor Dustin Richmond at UCSC as a Instructional Design Research Assistant for CSE 100, Intro to Logic Design.
-                        <br /><br />
-                        I also teach private piano lessons for elementary school students. Email me if you're interested!
-                    </p>
-                    <div className="footer">
-                        <a href="mailto:rphlhuang@gmail.com" target="_blank" rel="noopener noreferrer">
-                            <img className="icon" src={email} alt="Email" />
-                        </a>
-                        <a href="https://github.com/rphlhuang" target="_blank" rel="noopener noreferrer">
-                            <img className="icon" src={github} alt="GitHub" />
-                        </a>
-                        <a href="https://www.linkedin.com/in/rphlhuang" target="_blank" rel="noopener noreferrer">
-                            <img className="icon-linkedin" src={linkedin} alt="LinkedIn" />
-                        </a>
+    const handleEmailClick = () => {
+        if (emailStatus === 'idle') {
+            setEmailStatus('visible');
+        } else {
+            navigator.clipboard.writeText(emailStr);
+            setShowCopied(true);
+        }
+    };
+
+    return (
+        <div className="App">
+            <CustomNavbar />
+
+            <div className="main-container">
+
+                <div className="intro-row">
+                    <div className="left-col">
+                        <h1 className="name">Raphael Huang</h1>
+                    </div>
+                    <div className="right-col right-col-title">
+                        <i><b className="title">Computer Engineering M.S. @ UC Santa Cruz</b></i>
                     </div>
                 </div>
+
+                <div className="content-row">
+                    <div className="left-col img-container">
+                        <img src={require("./img/about.jpg")} className="profile-pic" alt="profile" />
+                    </div>
+                    <div className="right-col">
+                        <p className="main-body">
+                            Nice to meet you!
+                            <br /><br />
+                            I'm a hardware engineer, educator, and musician pursuing a Master's in
+                            Computer Science and Engineering at UC Santa Cruz. I'm expecting to graduate in December 2026.
+                            <br /><br />
+                            On the hardware side, I'm interested in formal verification, heterogenous computing, and computer architecture.
+                            My work in education currently encompasses various projects pushing towards agile, open-source, and equitable hardware design education.
+                            <br /><br />
+                            In the past, I've also worked as a recording engineer, TA, CAV engineer, and piano teacher.
+                            <br /><br />
+                            I'm part of the <a href="https://hsc.ucsc.edu/">Hardware Systems Collective</a> at UCSC,
+                            where I research open-source and cloud-based alternatives to current
+                            proprietary workflows digital design and computer architecture courses.
+                        </p>
+                        <div className="footer">
+                            <div className="email-wrapper" onClick={handleEmailClick} style={{ cursor: 'pointer', position: 'relative' }}>
+                                {emailStatus === 'idle' ? (
+                                    <img className="icon" src={email} alt="Email" />
+                                ) : (
+                                    <div className={`email-revealed-container ${emailStatus === 'fading' ? 'fade-out' : ''}`}>
+                                        <div className="email-lines">
+                                            <span>rphlhuang</span>
+                                            <span>@gmail.com</span>
+                                        </div>
+                                        <svg className="copy-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16 1H4C2.9 1 2 1.9 2 3V17H4V3H16V1ZM19 5H8C6.9 5 6 5.9 6 7V21C6 22.1 6.9 23 8 23H19C20.1 23 21 22.1 21 21V7C21 5.9 20.1 5 19 5ZM19 21H8V7H19V21Z" fill="currentColor" />
+                                        </svg>
+                                    </div>
+                                )}
+                                <div className={`copied-popup ${showCopied ? 'visible' : ''}`}>Copied!</div>
+                            </div>
+                            <a href="https://github.com/rphlhuang" target="_blank" rel="noopener noreferrer">
+                                <img className="icon" src={github} alt="GitHub" />
+                            </a>
+                            <a href="https://www.linkedin.com/in/rphlhuang" target="_blank" rel="noopener noreferrer">
+                                <img className="icon-linkedin" src={linkedin} alt="LinkedIn" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
-
-    </div>
-  );
+    );
 }
 
 export default About;

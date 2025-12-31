@@ -1,5 +1,3 @@
-
-
 @media (min-width: 769px) {
     .main-container {
         padding: 2vh 2vw;
@@ -8,7 +6,7 @@
         margin: 0 auto;
         width: 75vw;
     }
-    
+
     .intro-row,
     .content-row {
         display: flex;
@@ -25,7 +23,7 @@
         font-size: 4vw;
         margin: 0;
     }
-    
+
     .main-body {
         margin: 0;
     }
@@ -51,13 +49,13 @@
         height: 5vw;
         filter: brightness(0%);
     }
-    
+
     .icon-linkedin {
         width: 5.3vw;
         height: 5.3vw;
         filter: brightness(0%);
     }
-    
+
     .footer {
         margin-top: 4vh;
         display: flex;
@@ -86,7 +84,7 @@
         gap: 2vw;
         margin-bottom: 1vh;
     }
-    
+
     .name {
         text-align: center;
         font-size: 10vw;
@@ -117,7 +115,7 @@
         aspect-ratio: 16/9;
         width: 100%;
         height: 200px;
-        overflow: hidden;    
+        overflow: hidden;
     }
 
     .profile-pic {
@@ -132,17 +130,91 @@
         height: 15vw;
         filter: brightness(0%);
     }
-    
+
     .icon-linkedin {
         transform: translateY(-0.4vh);
         width: 17.5vw;
         height: 17.5vw;
         filter: brightness(0%);
     }
-    
+
     .footer {
         margin-top: 1vh;
         display: flex;
         justify-content: space-evenly;
+    }
+}
+
+/* Email Interaction Styles */
+.email-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 5vw;
+    /* Maintain some width base to minimize jumpiness */
+}
+
+.email-revealed-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+}
+
+.email-revealed-container.fade-out {
+    opacity: 0;
+}
+
+.email-lines {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1;
+    font-size: 1.1vw;
+    font-weight: bold;
+    color: inherit;
+}
+
+.copy-icon {
+    width: 1.2vw;
+    height: 1.2vw;
+    opacity: 0.7;
+}
+
+.copied-popup {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0px);
+    background-color: #333;
+    color: #fff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.copied-popup.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(5px);
+}
+
+@media (max-width: 769px) {
+    .email-wrapper {
+        min-width: 15vw;
+    }
+
+    .email-lines {
+        font-size: 3vw;
+    }
+
+    .copy-icon {
+        width: 3.5vw;
+        height: 3.5vw;
     }
 }
