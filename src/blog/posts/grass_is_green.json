@@ -2,21 +2,25 @@
     "title": "Grass is Green",
     "artist": "Redeemer Music Makers",
     "albumArt": "grass_is_green.jpg",
+    "description": "A three track LP of original covers and compositions by the Redeemer music making team: Nate Gentilin (guitar, vocals), Kevin Deutsch (keys), Andrew Kalthoff (bass), and Blake Dadson (drums). Recorded by Raphael at the UC Santa Cruz Electronic Music Studios, May 2025.",
     "tracks": [
         {
             "title": "Now the Green Blade Riseth",
             "fileName": "NowTheGreenBladeRiseth.mp3",
-            "duration": "3:23"
+            "duration": "3:23",
+            "description": "A funky cover of a Easter classic. Note the funk. It's funky."
         },
         {
             "title": "Memory Box (The Burial)",
             "fileName": "TheBurial.mp3",
-            "duration": "4:08"
+            "duration": "4:08",
+            "description": "Composed by Blake, for Blake's viking burial. Amazing lyrics by Nate. Mediocre mixing and mastering by Raphael."
         },
         {
             "title": "Life in Desert Sands",
             "fileName": "LifeInDesertSands.mp3",
-            "duration": "3:23"
+            "duration": "3:23",
+            "description": "\"There is not a square inch in the whole domain of our human existence over which Christ, who is Sovereign over all, does not cry, 'Mine!'\" - Abraham Kuyper"
         }
     ]
 }

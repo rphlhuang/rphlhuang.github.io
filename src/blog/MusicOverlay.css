@@ -1,56 +1,249 @@
 .music-overlay .music-overlay-content {
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    justify-content: center;
+    align-items: flex-start;
+    /* Align fast to top */
+    justify-content: flex-start;
     width: 100%;
     height: 100%;
     padding: 20px;
-    gap: 20px;
+    gap: 40px;
+    /* overflow: hidden; Removed to allow playhead to be visible */
+    position: relative;
+    /* Context for absolute children if needed */
 }
 
-.record-player-placeholder {
-    flex: 1;
+.right-column {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center horizontally in column */
+    max-width: 45%;
+    position: relative;
+    /* Context for printer */
+    justify-content: flex-start;
+    padding-top: 5vh;
+    /* Top spacing */
+}
+
+.record-player {
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e0e0e0;
-    border-radius: 12px;
-    min-width: 300px;
+    transform: translateX(-50%);
+    position: relative;
+    /* Needed for absolute positioning of playhead */
+}
+
+/* Wrapper for sliding animation */
+.record-slide-wrapper {
+    transform: translateX(-120%);
+    /* Start off-screen left */
+    animation: slideInRecord 1s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
+    /* Delay to let background slide first */
+}
+
+.record {
+    width: 600px;
+    /* Larger outer circle */
+    height: 600px;
+    background: repeating-radial-gradient(circle, #444 0, #000000 2px, #0f0f0f 2px, #191919 4px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spin 5s linear infinite;
+    /* Faster spin for realistic RPM */
+    animation-play-state: paused;
+    /* Default paused */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.album-art {
+    width: 200px;
+    /* Smaller inner circle */
+    height: 200px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* border: 12px solid #a98d69; */
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Spin when playing */
+.record-player.playing .record {
+    animation-play-state: running;
+}
+
+@keyframes slideInRecord {
+    from {
+        transform: translateX(-120%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* --- Playhead Styles --- */
+.playhead-container {
+    position: absolute;
+    top: -50px;
+    right: 50px;
+    width: 200px;
+    height: 300px;
+    pointer-events: none;
+    /* Let clicks pass through */
+    z-index: 20;
+}
+
+
+.playhead-arm {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-origin: 140px 40px;
+    /* Pivot point */
+    transform: rotate(-48deg);
+    /* Default position (off-record) */
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Smooth movement between tracks */
+}
+
+.playhead-pivot {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    width: 40px;
+    height: 40px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 20;
+    border: 2px solid #ccc;
+}
+
+.playhead-pivot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: #888;
+    border-radius: 50%;
+}
+
+/* --- Bent Playhead Refactor --- */
+.playhead-body {
+    position: absolute;
+    top: 40px;
+    right: 58px;
+    /* Wrapper for the arm structure */
+    pointer-events: none;
+    z-index: 3;
+}
+
+.playhead-upper-arm {
+    width: 12px;
+    height: 200px;
+    background: #d4d4d4;
+    transform-origin: top center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    /* Straight down from pivot */
+    position: relative;
+}
+
+.playhead-elbow {
+    position: absolute;
+    bottom: -6px;
+    /* Connect to bottom of upper arm */
+    left: 0;
+    width: 9px;
+    height: 9px;
+    /* Pivot point for bend */
+}
+
+.playhead-lower-arm {
+    width: 12px;
+    height: 140px;
+    background: #d4d4d4;
+    transform-origin: top center;
+    transform: rotate(30deg);
+    /* The 30 degree bend */
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.playhead-head {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 55px;
+    background: #333;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 4;
+}
+
+.playhead-head::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    height: 6px;
+    background-color: #ff0000;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
 }
 
 .track-info {
-    flex: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-color: #f7f7f7;
-    border-radius: 12px;
+    background-color: #fcfcfc;
+    border-radius: 10px;
     color: #333;
     font-family: 'Inter', sans-serif;
-    overflow-y: auto;
-}
-
-.album-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0;
-    color: #1a1a1a;
-}
-
-.artist-name {
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin: 0 0 24px 0;
-    color: #555;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 16px;
+    /* max-width removed here, handled by right-column */
+    /* height: auto; removed */
+    max-height: 50vh;
+    /* Limit height to allow printer space below? Or just auto? */
+    overflow: hidden;
+    z-index: 5;
+    /* Sit on top of printer card */
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow to separate layers */
 }
 
 .tracklist {
     list-style: none;
     padding: 0;
     margin: 0;
+    overflow-y: auto;
     flex-grow: 1;
 }
 
@@ -58,27 +251,260 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 8px;
-    border-bottom: 1px solid #eee;
-    font-size: 1rem;
-    transition: background-color 0.2s ease-in-out;
+    padding: 15px 12px;
+    border-bottom: 1px solid #f3f3f3;
+    font-size: 1.1rem;
+    transition: background-color 0.2s;
+    cursor: pointer;
 }
 
-.track-item:last-child {
-    border-bottom: none;
+.track-item.selected {
+    background-color: #e7e7e7;
+    font-weight: bold;
 }
 
-.track-item:hover {
-    background-color: #edebeb;
-    border-radius: 4px;
+.track-item:hover:not(.selected) {
+    background-color: #f5f5f5;
 }
 
-.track-title {
-    font-weight: 500;
+.album-info {
+    padding: 20px 12px 10px;
+    text-align: center;
 }
 
-.track-duration {
+.album-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: #222;
+}
+
+.artist-name {
+    font-size: 1.2rem;
     font-weight: 400;
-    color: #777;
-    font-family: 'monospace';
+    color: #666;
+}
+
+.media-controls {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px 0;
+    border-top: 1px solid #f0f0f0;
+}
+
+.media-controls button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #333;
+    transition: color 0.2s;
+}
+
+.media-controls button:hover {
+    color: #000;
+}
+
+.media-controls button svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .music-overlay-content {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        padding-top: 80px;
+        /* Push content down */
+    }
+
+    .record-player {
+        transform: translateX(0);
+        position: absolute;
+        top: -150px;
+        /* Pull the record up, half off-screen */
+        z-index: 0;
+    }
+
+    .playhead-container {
+        display: none;
+    }
+
+    .record {
+        width: 350px;
+        height: 350px;
+    }
+
+    .album-art {
+        width: 120px;
+        height: 120px;
+        border-width: 8px;
+    }
+
+    .track-info {
+        max-width: 90%;
+        max-height: 70%;
+        z-index: 1;
+        padding: 15px;
+    }
+
+    .album-title {
+        font-size: 1.5rem;
+    }
+
+    .artist-name {
+        font-size: 1rem;
+    }
+}
+
+/* --- Progress Bar Styles --- */
+.progress-container {
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
+    /* Fix width overflow */
+}
+
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-family: monospace;
+    color: #666;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+    cursor: pointer;
+}
+
+.progress-bar:hover {
+    opacity: 1;
+}
+
+.progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #333;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s;
+}
+
+.progress-bar::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.progress-bar::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #333;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+/* --- Printer Card Animation --- */
+.printer-card {
+    width: 90%;
+    /* Slightly narrower than track info */
+    background-color: #fffdf0;
+    /* Paper color */
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    /* Make it look like it came from inside */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #444;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+
+    position: absolute;
+    top: 100%;
+    /* Start just below track info */
+    left: 5%;
+    /* Center relative to parent width 90% */
+    z-index: 2;
+    /* Below track-info (5) */
+
+    transform-origin: top center;
+    visibility: hidden;
+    /* Default hidden */
+    max-height: 300px;
+    overflow-y: auto;
+
+    /* Decoration */
+    border-bottom: 2px dashed #ddd;
+    /* Tear-off look */
+}
+
+.printer-card.printing {
+    visibility: visible;
+    animation: printOut 1s linear forwards;
+}
+
+.printer-card.falling {
+    visibility: visible;
+    animation: fallOff 0.8s ease-in forwards;
+}
+
+@keyframes printOut {
+    0% {
+        transform: translateY(-90%);
+        /* Starts mostly tucked under */
+    }
+
+    30% {
+        transform: translateY(-50%);
+        /* Slide down a bit */
+    }
+
+    50% {
+        transform: translateY(-50%);
+        /* Pause */
+    }
+
+    70% {
+        transform: translateY(-20%);
+        /* Slide more */
+    }
+
+    80% {
+        transform: translateY(-20%);
+        /* Pause */
+    }
+
+    100% {
+        transform: translateY(0);
+        /* Fully out */
+    }
+}
+
+@keyframes fallOff {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(600px) rotate(10deg);
+        opacity: 0;
+    }
 }
