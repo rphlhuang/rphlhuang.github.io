@@ -36,8 +36,43 @@ const CV = () => {
             backgroundColor: '#ffffff',
             minHeight: '100vh',
             padding: '20px 0',
-            color: 'black'
+            color: 'black',
+            position: 'relative'
         }}>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '20px',
+                    left: '20px',
+                    fontSize: '24px',
+                    cursor: 'pointer',
+                    zIndex: 100,
+                    color: 'black',
+                    lineHeight: '1'
+                }}
+                onClick={() => window.location.href = '/'}
+            >
+                ⋘
+            </div>
+            <a
+                href={pdfUrl}
+                download
+                style={{
+                    position: 'absolute',
+                    top: '20px',
+                    right: '20px',
+                    color: 'black',
+                    zIndex: 100,
+                    cursor: 'pointer'
+                }}
+                title="Download CV"
+            >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 16L12 4" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M6 10L12 16L18 10" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M6 20L18 20" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+            </a>
             <style>
                 {`
                     .react-pdf__Page canvas,
@@ -51,24 +86,6 @@ const CV = () => {
                     }
                 `}
             </style>
-            <div style={{ marginBottom: '20px' }}>
-                <a
-                    href={pdfUrl}
-                    download
-                    style={{
-                        padding: '10px 20px',
-                        backgroundColor: '#000000',
-                        color: '#ffffff',
-                        textDecoration: 'none',
-                        borderRadius: '5px',
-                        fontWeight: 'bold',
-                        boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
-                        fontFamily: 'inherit'
-                    }}
-                >
-                    Download CV
-                </a>
-            </div>
 
             <Document
                 file={pdfUrl}
