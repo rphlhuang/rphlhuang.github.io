@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
+import CustomNavbar from './CustomNavbar';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 
@@ -35,31 +36,20 @@ const CV = () => {
             alignItems: 'center',
             backgroundColor: '#ffffff',
             minHeight: '100vh',
-            padding: '20px 0',
+            paddingBottom: '20px',
             color: 'black',
             position: 'relative'
         }}>
-            <div
-                style={{
-                    position: 'absolute',
-                    top: '20px',
-                    left: '20px',
-                    fontSize: '24px',
-                    cursor: 'pointer',
-                    zIndex: 100,
-                    color: 'black',
-                    lineHeight: '1'
-                }}
-                onClick={() => window.location.href = '/'}
-            >
-                ⋘
+            <div style={{ width: '100%' }}>
+                <CustomNavbar />
             </div>
+
             <a
                 href={pdfUrl}
                 download
                 style={{
                     position: 'absolute',
-                    top: '20px',
+                    top: '12vh',
                     right: '20px',
                     color: 'black',
                     zIndex: 100,
@@ -87,24 +77,26 @@ const CV = () => {
                 `}
             </style>
 
-            <Document
-                file={pdfUrl}
-                onLoadSuccess={onDocumentLoadSuccess}
-                loading={<div style={{ padding: '20px' }}>Loading PDF...</div>}
-                error={<div style={{ padding: '20px', color: 'red' }}>Failed to load PDF. <a href={pdfUrl}>Click here to download.</a></div>}
-                className="pdf-document"
-            >
-                {Array.from(new Array(numPages), (el, index) => (
-                    <div key={`page_${index + 1}`} style={{ marginBottom: '20px', width: '90%', maxWidth: '800px', margin: '0 auto 20px auto' }}>
-                        <Page
-                            pageNumber={index + 1}
-                            width={targetWidth}
-                            renderTextLayer={false}
-                            renderAnnotationLayer={false}
-                        />
-                    </div>
-                ))}
-            </Document>
+            <div style={{ marginTop: '20px', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Document
+                    file={pdfUrl}
+                    onLoadSuccess={onDocumentLoadSuccess}
+                    loading={<div style={{ padding: '20px' }}>Loading PDF...</div>}
+                    error={<div style={{ padding: '20px', color: 'red' }}>Failed to load PDF. <a href={pdfUrl}>Click here to download.</a></div>}
+                    className="pdf-document"
+                >
+                    {Array.from(new Array(numPages), (el, index) => (
+                        <div key={`page_${index + 1}`} style={{ marginBottom: '20px', width: '90%', maxWidth: '800px', margin: '0 auto 20px auto' }}>
+                            <Page
+                                pageNumber={index + 1}
+                                width={targetWidth}
+                                renderTextLayer={false}
+                                renderAnnotationLayer={false}
+                            />
+                        </div>
+                    ))}
+                </Document>
+            </div>
         </div>
     );
 };

@@ -5,6 +5,7 @@ import Blog from './blog/Blog';
 import Engineering from './Engineering';
 import Music from './Music';
 import Education from './Education';
+import Papers from './Papers';
 
 import CV from './cv';
 
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<About />} />
         <Route path="/cv" element={<CV />} />
+        <Route path="/papers" element={<Papers />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/computers" element={<Engineering />} />
         <Route path="/music" element={<Music />} />
