@@ -11,7 +11,14 @@ const CV = () => {
     const [width, setWidth] = useState(window.innerWidth);
 
     React.useEffect(() => {
-        const handleResize = () => setWidth(window.innerWidth);
+        const handleResize = () => {
+            // Only update if width changes significantly (e.g., orientation change)
+            // This prevents re-rendering on mobile scroll/zoom
+            if (Math.abs(window.innerWidth - width) > 100) {
+                setWidth(window.innerWidth);
+            }
+        };
+
         window.addEventListener('resize', handleResize);
 
         // Save original overflow style
@@ -24,13 +31,17 @@ const CV = () => {
             // Restore original overflow style
             document.body.style.overflow = originalOverflow;
         };
-    }, []);
+    }, [width]);
 
     function onDocumentLoadSuccess({ numPages }) {
         setNumPages(numPages);
     }
 
     const pdfUrl = `${process.env.PUBLIC_URL}/cv.pdf`;
+
+    // Increase resolution for mobile devices
+    const scaleFactor = 2;
+    const targetWidth = Math.min(width * 0.9, 800);
 
     return (
         <div style={{
@@ -42,6 +53,19 @@ const CV = () => {
             padding: '20px 0',
             color: 'black'
         }}>
+            <style>
+                {`
+                    .cv-page {
+                        width: 100% !important;
+                        height: auto !important;
+                        max-width: ${targetWidth}px;
+                    }
+                    .cv-page canvas {
+                        width: 100% !important;
+                        height: auto !important;
+                    }
+                `}
+            </style>
             <div style={{ marginBottom: '20px' }}>
                 <a
                     href={pdfUrl}
@@ -70,8 +94,9 @@ const CV = () => {
                 {Array.from(new Array(numPages), (el, index) => (
                     <div key={`page_${index + 1}`} style={{ marginBottom: '20px' }}>
                         <Page
+                            className="cv-page"
                             pageNumber={index + 1}
-                            width={Math.min(width * 0.9, 800)}
+                            width={targetWidth * scaleFactor}
                             renderTextLayer={false}
                             renderAnnotationLayer={false}
                         />
