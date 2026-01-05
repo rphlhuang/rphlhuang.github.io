@@ -8,40 +8,25 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 
 const CV = () => {
     const [numPages, setNumPages] = useState(null);
-    const [width, setWidth] = useState(window.innerWidth);
 
     React.useEffect(() => {
-        const handleResize = () => {
-            // Only update if width changes significantly (e.g., orientation change)
-            // This prevents re-rendering on mobile scroll/zoom
-            if (Math.abs(window.innerWidth - width) > 100) {
-                setWidth(window.innerWidth);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-
         // Save original overflow style
         const originalOverflow = document.body.style.overflow;
         // Enable scrolling for CV page
         document.body.style.overflow = 'auto';
 
         return () => {
-            window.removeEventListener('resize', handleResize);
             // Restore original overflow style
             document.body.style.overflow = originalOverflow;
         };
-    }, [width]);
+    }, []);
 
     function onDocumentLoadSuccess({ numPages }) {
         setNumPages(numPages);
     }
 
     const pdfUrl = `${process.env.PUBLIC_URL}/cv.pdf`;
-
-    // Increase resolution for mobile devices
-    const scaleFactor = 2;
-    const targetWidth = Math.min(width * 0.9, 800);
+    const targetWidth = 1024; // Static high resolution width
 
     return (
         <div style={{
@@ -55,14 +40,14 @@ const CV = () => {
         }}>
             <style>
                 {`
-                    .cv-page {
+                    .react-pdf__Page canvas,
+                    .react-pdf__Page .react-pdf__Page__canvas {
                         width: 100% !important;
                         height: auto !important;
-                        max-width: ${targetWidth}px;
                     }
-                    .cv-page canvas {
-                        width: 100% !important;
-                        height: auto !important;
+                    .react-pdf__Page {
+                        min-width: 100% !important;
+                        max-width: 100% !important;
                     }
                 `}
             </style>
@@ -90,13 +75,13 @@ const CV = () => {
                 onLoadSuccess={onDocumentLoadSuccess}
                 loading={<div style={{ padding: '20px' }}>Loading PDF...</div>}
                 error={<div style={{ padding: '20px', color: 'red' }}>Failed to load PDF. <a href={pdfUrl}>Click here to download.</a></div>}
+                className="pdf-document"
             >
                 {Array.from(new Array(numPages), (el, index) => (
-                    <div key={`page_${index + 1}`} style={{ marginBottom: '20px' }}>
+                    <div key={`page_${index + 1}`} style={{ marginBottom: '20px', width: '90%', maxWidth: '800px', margin: '0 auto 20px auto' }}>
                         <Page
-                            className="cv-page"
                             pageNumber={index + 1}
-                            width={targetWidth * scaleFactor}
+                            width={targetWidth}
                             renderTextLayer={false}
                             renderAnnotationLayer={false}
                         />
