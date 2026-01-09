@@ -60,8 +60,6 @@ function About() {
                     </div>
                     <div className="right-col">
                         <p className="main-body">
-                            Nice to meet you!
-                            <br /><br />
                             I'm a hardware engineer, educator, and musician pursuing a Master's in
                             Computer Science and Engineering at UC Santa Cruz. I'm expecting to graduate in December 2026.
                             <br /><br />
