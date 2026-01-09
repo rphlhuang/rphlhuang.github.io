@@ -63,14 +63,15 @@ function About() {
                             I'm a hardware engineer, educator, and musician pursuing a Master's in
                             Computer Science and Engineering at UC Santa Cruz. I'm expecting to graduate in December 2026.
                             <br /><br />
-                            On the hardware side, I'm interested in formal verification, heterogenous computing, and computer architecture.
-                            My work in education currently encompasses various projects pushing towards agile, open-source, and equitable hardware design education.
+                            On the hardware side, I'm interested in formal verification and heterogenous computing.
+                            My work in education focuses on projects democratizing chip design education.
                             <br /><br />
-                            In the past, I've also worked as a recording engineer, TA, CAV engineer, and piano teacher.
+                            I'm currently a TA and the <a href="https://tlc.ucsc.edu/get-involved/join/graduate-pedagogy-fellows/">Graduate Pedagogy Fellow</a> for the Computer Science and Engineering department at UCSC.
+                            In the past, I've also worked as a recording engineer, TA, CAV/robotics engineer, and piano teacher.
                             <br /><br />
                             I'm part of the <a href="https://hsc.ucsc.edu/">Hardware Systems Collective</a> at UCSC,
-                            where I research open-source and cloud-based alternatives to current
-                            proprietary workflows digital design and computer architecture courses.
+                            where I research open-source alternatives to current
+                            proprietary workflows for digital design courses.
                         </p>
                         <div className="footer">
                             <div className="email-wrapper" onClick={handleEmailClick} style={{ cursor: 'pointer', position: 'relative' }}>
