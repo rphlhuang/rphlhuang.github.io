@@ -1,5 +1,11 @@
 [
     {
+        "title": "LiveLLNN: Reconfigurable, Heterogeneous Lookup Table-Based Logical Neural Networks",
+        "fileName": "LiveLLNN_ReconfigureableHeterogeneousLookupTableBasedLogicalNeuralNetworks.pdf",
+        "authors": "Raphael Huang, Marco Frank, Chad Baker",
+        "year": "2026"
+    },
+    {
         "title": "Optimizing Cell Resizing in OpenROAD flow scripts using OMT",
         "fileName": "Optimizing_Cell_Resizing_in_OpenROAD_flow_scripts_using_OMT.pdf",
         "authors": "Chad Baker, Raphael Huang, Wajid Ali, Anil Muddamsetti",
