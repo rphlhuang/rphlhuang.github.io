@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useState, useCallback } from "react";
 import CRTChromaFilter from './CRTChromaFilter.js'
 import useKonami from "./useKonami";
+import { DESKTOP_FOLDERS, FOLDER_CONFIGS } from "./folders.js";
 
 
 function Blog() {
@@ -27,11 +28,14 @@ function Blog() {
     setActiveWindowId(id);
   };
 
-  const iconClickedHandler = (name) => {
+  const iconClickedHandler = (folderKey) => {
+    const folderConfig = FOLDER_CONFIGS[folderKey];
+    if (!folderConfig) return;
+
     const newWindow = {
       id: uuidv4(),
-      title: name,
-      folderKey: name,
+      title: folderConfig.windowTitle,
+      folderKey,
       content: 'Window Content',
       isOpen: true
     };
@@ -47,9 +51,16 @@ function Blog() {
     <CustomNavbar />
 
     <div className="desktop">
-      <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name="jrnl"/>
-      <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name="music"/>
-      <Icon onClick={iconClickedHandler} boundingSelector=".desktop" thumbnail={folderImg} name="etc"/>
+      {DESKTOP_FOLDERS.map(folder => (
+        <Icon
+          key={folder.key}
+          onClick={iconClickedHandler}
+          boundingSelector=".desktop"
+          thumbnail={folderImg}
+          name={folder.label}
+          value={folder.key}
+        />
+      ))}
       {windows.map(win => (
         win.isOpen && (
           <Window

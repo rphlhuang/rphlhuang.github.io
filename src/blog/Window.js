@@ -6,7 +6,7 @@ import ImageOverlay from './ImageOverlay.js';
 import MusicOverlay from './MusicOverlay.js';
 import Icon from "./Icon.js"
 import "./Window.css";
-import {IMAGE_CONTEXTS, INDEX_MAP} from "./folders.js"
+import {FOLDER_CONFIGS, IMAGE_CONTEXTS, INDEX_MAP} from "./folders.js"
 
 function Window({id, title, folderKey, onClose, onContainerClick, onContainerDrag, active}) {
     const style = {
@@ -30,7 +30,7 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
             document.getElementById("overlay").classList.remove("animateOut");
         }
 
-        if (folderKey === 'music') {
+        if (FOLDER_CONFIGS[folderKey]?.overlayType === 'music') {
             setOverlayType('music');
         } else {
             setOverlayType('image');

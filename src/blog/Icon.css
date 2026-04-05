@@ -39,6 +39,7 @@
 .iconName {
     text-align: center;
     font-family: monospace;
+    white-space: pre-line;
 
     user-select: none;
     pointer-events: auto;
