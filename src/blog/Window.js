@@ -1,5 +1,5 @@
 import { Rnd } from 'react-rnd';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 import ImageOverlay from './ImageOverlay.js';
@@ -7,6 +7,37 @@ import MusicOverlay from './MusicOverlay.js';
 import Icon from "./Icon.js"
 import "./Window.css";
 import {FOLDER_CONFIGS, IMAGE_CONTEXTS, INDEX_MAP} from "./folders.js"
+
+function getDefaultWindowSize() {
+    if (typeof window === "undefined") {
+        return {
+            x: 60,
+            y: 100,
+            width: 650,
+            height: 450,
+            maxWidth: 650,
+            maxHeight: 450,
+            minWidth: 350,
+            minHeight: 250,
+        };
+    }
+
+    const maxWidth = Math.floor(window.innerWidth * 0.8);
+    const maxHeight = Math.floor(window.innerHeight * 0.8);
+    const width = Math.min(650, maxWidth);
+    const height = Math.min(450, maxHeight);
+
+    return {
+        x: Math.min(60, Math.max(0, window.innerWidth - width)),
+        y: Math.min(100, Math.max(0, window.innerHeight - height)),
+        width,
+        height,
+        maxWidth,
+        maxHeight,
+        minWidth: Math.min(350, maxWidth),
+        minHeight: Math.min(250, maxHeight),
+    };
+}
 
 function Window({id, title, folderKey, onClose, onContainerClick, onContainerDrag, active}) {
     const style = {
@@ -23,9 +54,16 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
     const [lockedSize, setLockedSize] = useState(null);
     const [selectedPost, setSelectedPost] = useState(null);
     const [overlayType, setOverlayType] = useState(null);
+    const defaultWindowSize = getDefaultWindowSize();
+
+    const handleClose = useCallback((e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onClose(id);
+    }, [id, onClose]);
 
     // overlay handlers
-    const handleImageClick = (title) => {
+    const handleImageClick = useCallback((title) => {
         if (document.getElementById("overlay")) {
             document.getElementById("overlay").classList.remove("animateOut");
         }
@@ -43,7 +81,7 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
         }
         
         setSelectedPost(title);
-    };
+    }, [folderKey]);
 
     const handleAnimationEnd = (e) => {
         if (e.animationName === "slideLeft") {
@@ -73,7 +111,7 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
             boundingSelector: '.desktop',
             onClick: () => handleImageClick(name),
         })));
-    }, [folderKey]);
+    }, [folderKey, handleImageClick]);
 
 
 
@@ -90,9 +128,12 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
             <Rnd
                 style={style} 
                 dragHandleClassName='dragbar' 
-                minHeight='250px'
-                minWidth='350px'
-                default={{x:60, y:100, width:650, height:450}}
+                cancel='.close'
+                minHeight={defaultWindowSize.minHeight}
+                minWidth={defaultWindowSize.minWidth}
+                maxWidth={defaultWindowSize.maxWidth}
+                maxHeight={defaultWindowSize.maxHeight}
+                default={defaultWindowSize}
                 onClick={() => onContainerClick(id)}
                 onDrag={() => onContainerDrag(id)}
                 className='window'
@@ -100,7 +141,16 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
                 <div className='dragbar'>
                     <div className='toolbar'>
                         <div className='windowName'>{title}</div>
-                        <div className='close' onClick={() => onClose(id)}>×</div>
+                        <button
+                            type='button'
+                            className='close'
+                            aria-label={`Close ${title}`}
+                            onClick={handleClose}
+                            onPointerDown={(e) => e.stopPropagation()}
+                            onTouchEnd={handleClose}
+                        >
+                            ×
+                        </button>
                     </div>
                 </div>
 

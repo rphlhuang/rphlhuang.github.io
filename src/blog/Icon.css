@@ -18,6 +18,8 @@
     overflow: hidden; /* Ensures that any overflow is clipped */
 
     user-select: none;
+    -webkit-user-drag: none;
+    touch-action: manipulation;
     pointer-events: auto;
     cursor: pointer;
 }

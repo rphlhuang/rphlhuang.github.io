@@ -12,12 +12,17 @@
 .close {
     font-size: 18pt;
     color: white;
-    padding-bottom: 6px;
-    padding-right: 6px;
+    padding: 2px 8px 6px;
     margin-left: auto !important;
-    
+
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    line-height: 1;
     cursor: pointer;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .windowName {
@@ -51,4 +56,3 @@
     object-fit: cover; /* Ensures the image covers the grid cell */
     border-radius: 5px; /* Optional: Adds a bit of rounding to the corners */
 }
-
