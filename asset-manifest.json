@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.284f3cef.css",
-    "main.js": "/static/js/main.b726c9f6.js",
+    "main.css": "/static/css/main.2afa022e.css",
+    "main.js": "/static/js/main.f24818d9.js",
     "static/js/453.ee9775be.chunk.js": "/static/js/453.ee9775be.chunk.js",
     "static/media/NowTheGreenBladeRiseth.mp3": "/static/media/NowTheGreenBladeRiseth.3e3662eb8a01d5450d92.mp3",
     "static/media/readme.jpg": "/static/media/readme.de1ecda021be50c59d49.jpg",
@@ -38,12 +38,12 @@
     "static/media/linkedin.png": "/static/media/linkedin.5f2f1c09e0e24b438580.png",
     "static/media/email.png": "/static/media/email.edde96781f1253399d92.png",
     "index.html": "/index.html",
-    "main.284f3cef.css.map": "/static/css/main.284f3cef.css.map",
-    "main.b726c9f6.js.map": "/static/js/main.b726c9f6.js.map",
+    "main.2afa022e.css.map": "/static/css/main.2afa022e.css.map",
+    "main.f24818d9.js.map": "/static/js/main.f24818d9.js.map",
     "453.ee9775be.chunk.js.map": "/static/js/453.ee9775be.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.284f3cef.css",
-    "static/js/main.b726c9f6.js"
+    "static/css/main.2afa022e.css",
+    "static/js/main.f24818d9.js"
   ]
 }
