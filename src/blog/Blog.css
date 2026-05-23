@@ -41,9 +41,10 @@
 }
 
 .desktop > .iconContainer .iconImage {
-  width: 144px;
-  height: 120px;
+  width: 130px;
+  height: 104px;
   object-fit: contain;
+  transform: scale(0.55);
 }
 
 .navbarElem {
