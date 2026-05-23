@@ -27,6 +27,23 @@
   top: 10vh;
   height: 90%;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.desktop > .iconContainer {
+  width: 192px;
+  align-items: center;
+}
+
+.desktop > .iconContainer .iconImage {
+  width: 144px;
+  height: 120px;
+  object-fit: contain;
 }
 
 .navbarElem {

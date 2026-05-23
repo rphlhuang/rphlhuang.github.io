@@ -2,6 +2,7 @@
 .dragbar {
     background-color: black;
     cursor: move;
+    flex-shrink: 0;
 }
 
 .toolbar {
@@ -42,9 +43,13 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 10px;
+    align-content: start;
 
     width: 100%;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
+    box-sizing: border-box;
+    overflow: auto;
 
     font-family: monospace;
 }
@@ -55,4 +60,21 @@
     height: auto; /* Maintains aspect ratio */
     object-fit: cover; /* Ensures the image covers the grid cell */
     border-radius: 5px; /* Optional: Adds a bit of rounding to the corners */
+}
+
+@media (max-width: 600px) {
+    .contentContainer {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    }
+
+    .contentContainer .iconContainer {
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .contentContainer .iconImage {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 130 / 100;
+    }
 }

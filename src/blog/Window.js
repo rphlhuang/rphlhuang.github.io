@@ -39,13 +39,16 @@ function getDefaultWindowSize() {
     };
 }
 
-function Window({id, title, folderKey, onClose, onContainerClick, onContainerDrag, active}) {
+function Window({id, title, folderKey, onClose, onContainerClick, onContainerDrag, active, initialPostName, onOpenPost, onClosePost}) {
     const style = {
         border: "solid 1px #ddd",
         background: "#f0f0f0",
         zIndex: active ? 1000 : 'auto',
         width: '100%',
-        height: '100%'
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden'
     };
 
     // states
@@ -81,7 +84,17 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
         }
         
         setSelectedPost(title);
-    }, [folderKey]);
+        onOpenPost?.(folderKey, title);
+    }, [folderKey, onOpenPost]);
+
+    // Open the overlay requested via a deep link once, after mount.
+    const didOpenInitial = useRef(false);
+    useEffect(() => {
+        if (didOpenInitial.current) return;
+        if (!initialPostName) return;
+        didOpenInitial.current = true;
+        handleImageClick(initialPostName);
+    }, [initialPostName, handleImageClick]);
 
     const handleAnimationEnd = (e) => {
         if (e.animationName === "slideLeft") {
@@ -96,6 +109,7 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
         for (let i = 0; i < textBlocks.length; i++) {
             textBlocks[i].classList.add("animateFade");
         }
+        onClosePost?.(folderKey);
     };
 
     useEffect(() => {
@@ -118,8 +132,8 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
     // set image size and keep it that way
     useEffect(() => {
         if (contentRef.current && !lockedSize) {
-            const { offsetWidth, offsetHeight } = contentRef.current;
-            setLockedSize({ width: offsetWidth, height: offsetHeight });
+            const { offsetWidth } = contentRef.current;
+            setLockedSize({ width: offsetWidth });
         }
     }, [contents, lockedSize]); // run this effect when contents are loaded AND lockedSize is not set
 

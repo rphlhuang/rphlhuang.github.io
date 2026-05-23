@@ -3,13 +3,17 @@ import Icon from './Icon.js'
 import Window from './Window.js'
 import CustomNavbar from '../CustomNavbar.js'
 import { v4 as uuidv4 } from 'uuid';
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
+import { useParams, useNavigate } from 'react-router-dom';
 import CRTChromaFilter from './CRTChromaFilter.js'
 import useKonami from "./useKonami";
 import { DESKTOP_FOLDERS, FOLDER_CONFIGS } from "./folders.js";
 
 
 function Blog() {
+
+  const { folderKey: routeFolderKey, postName: routePostName } = useParams();
+  const navigate = useNavigate();
 
   const [crtOn, setCrtOn] = useState(false);
   const [windows, setWindows] = useState([]);
@@ -18,12 +22,33 @@ function Blog() {
   const toggleCRT = useCallback(() => setCrtOn(prev => !prev), []);
   useKonami(toggleCRT);
 
+  // Open the folder window (and overlay) requested by the URL on first load only.
+  // Captured on mount so later in-app navigation doesn't reopen windows.
+  const initialRoute = useRef({ folderKey: routeFolderKey, postName: routePostName });
+  useEffect(() => {
+    const { folderKey, postName } = initialRoute.current;
+    if (!folderKey || !FOLDER_CONFIGS[folderKey]) return;
+
+    const folderConfig = FOLDER_CONFIGS[folderKey];
+    const newId = uuidv4();
+    setWindows([{
+      id: newId,
+      title: folderConfig.windowTitle,
+      folderKey,
+      content: 'Window Content',
+      isOpen: true,
+      initialPostName: postName || null,
+    }]);
+    setActiveWindowId(newId);
+  }, []);
+
   const closeWindow = (id) => {
     setWindows(prevWindows =>
       prevWindows.filter(win => win.id !== id)
     );
+    navigate('/blog');
   };
-  
+
   const bringToFront = (id) => {
     setActiveWindowId(id);
   };
@@ -40,7 +65,16 @@ function Blog() {
       isOpen: true
     };
     setWindows(prevWindows => [...prevWindows, newWindow]);
+    navigate(`/blog/${folderKey}`);
   }
+
+  const handleOpenPost = useCallback((folderKey, postName) => {
+    navigate(`/blog/${folderKey}/${postName}`);
+  }, [navigate]);
+
+  const handleClosePost = useCallback((folderKey) => {
+    navigate(`/blog/${folderKey}`);
+  }, [navigate]);
 
   const folderImg = require("./img/folderIcon.png");
   
@@ -73,6 +107,9 @@ function Blog() {
             onContainerDrag={bringToFront}
             active={win.id === activeWindowId}
             folderKey={win.folderKey}
+            initialPostName={win.initialPostName}
+            onOpenPost={handleOpenPost}
+            onClosePost={handleClosePost}
           />
         )
       ))}
