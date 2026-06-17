@@ -6,6 +6,7 @@ import Engineering from './Engineering';
 import Music from './Music';
 import Education from './Education';
 import Papers from './Papers';
+import Apps from './Apps';
 import NotFound from './NotFound';
 
 import CV from './cv';
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<About />} />
         <Route path="/cv" element={<CV />} />
         <Route path="/papers" element={<Papers />} />
+        <Route path="/apps" element={<Apps />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:folderKey" element={<Blog />} />
         <Route path="/blog/:folderKey/:postName" element={<Blog />} />

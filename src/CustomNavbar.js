@@ -70,6 +70,12 @@ function CustomNavbar() {
                 </div>
             </div>
 
+            <div className="navbarElem">
+                <div className="navbarElemText">
+                    <Link to="/apps" id="link"> apps </Link>
+                </div>
+            </div>
+
             {/* <div className="navbarElem">
                 <div className="navbarElemText">
                 <Link to="/computers" id="link"> engineering </Link>
