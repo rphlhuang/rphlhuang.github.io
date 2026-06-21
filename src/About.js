@@ -64,7 +64,7 @@ function About() {
                             Computer Science and Engineering at UC Santa Cruz. I'm expecting to graduate in December 2026.
                             <br /><br />
                             On the hardware side, I'm interested in formal verification and heterogenous computing.
-                            My work in education focuses on projects democratizing chip design education.
+                            My work in education focuses redefining good education in the age of GenAI.
                             <br /><br />
                             I'm currently a TA and the <a href="https://tlc.ucsc.edu/get-involved/join/graduate-pedagogy-fellows/">Graduate Pedagogy Fellow</a> for the Computer Science and Engineering department at UCSC.
                             In the past, I've also worked as a recording engineer, TA, CAV/robotics engineer, and piano teacher.
