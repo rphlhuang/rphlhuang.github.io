@@ -129,6 +129,25 @@ function Window({id, title, folderKey, onClose, onContainerClick, onContainerDra
 
 
 
+    // preload full-size images in background after thumbnails are displayed
+    useEffect(() => {
+        if (contents.length === 0) return;
+        const ctx = IMAGE_CONTEXTS[folderKey];
+        if (!ctx) return;
+        const postCtx = require.context('./posts', false, /\.json$/);
+        const allPosts = postCtx.keys().map(key => postCtx(key));
+        const idx = INDEX_MAP[folderKey];
+        if (!idx) return;
+        Object.keys(idx).forEach(postName => {
+            const post = allPosts.find(p => p.title === postName);
+            if (!post?.image) return;
+            try {
+                const img = new Image();
+                img.src = ctx(`./${post.image}`);
+            } catch (_) {}
+        });
+    }, [contents, folderKey]);
+
     // set image size and keep it that way
     useEffect(() => {
         if (contentRef.current && !lockedSize) {
