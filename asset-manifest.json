@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.734b8605.css",
-    "main.js": "/static/js/main.adaa8380.js",
+    "main.js": "/static/js/main.748c066a.js",
     "static/js/453.ee9775be.chunk.js": "/static/js/453.ee9775be.chunk.js",
     "static/media/NowTheGreenBladeRiseth.mp3": "/static/media/NowTheGreenBladeRiseth.3e3662eb8a01d5450d92.mp3",
     "static/media/readme.jpg": "/static/media/readme.de1ecda021be50c59d49.jpg",
@@ -36,18 +36,23 @@
     "static/media/img1.jpg": "/static/media/img1.34293dd5dc4fbf78bfbd.jpg",
     "static/media/about.jpg": "/static/media/about.eef3856fc96a80adf4a4.jpg",
     "static/media/img1small.jpg": "/static/media/img1small.32b956b47b47c0a1b5fe.jpg",
+    "static/media/mysteryfishsmall.png": "/static/media/mysteryfishsmall.8700f7a94a3d56ceb938.png",
     "static/media/mysteryfish.png": "/static/media/mysteryfish.31801f57f542d63b8b35.png",
     "static/media/grass_is_green.jpg": "/static/media/grass_is_green.bb429e3e634593de0a1a.jpg",
     "static/media/folderIcon.png": "/static/media/folderIcon.92c7a5244d7b11fb4f06.png",
     "static/media/linkedin.png": "/static/media/linkedin.5f2f1c09e0e24b438580.png",
+    "static/media/grass_is_greensmall.jpg": "/static/media/grass_is_greensmall.3167ed2aeabefa38a898.jpg",
+    "static/media/kuhnsmall.jpg": "/static/media/kuhnsmall.ee7f1416ed6fc9ad829c.jpg",
+    "static/media/graphicteessmall.jpg": "/static/media/graphicteessmall.0125aaf83e8eda39c615.jpg",
     "static/media/email.png": "/static/media/email.edde96781f1253399d92.png",
+    "static/media/topiasmall.jpg": "/static/media/topiasmall.53f7a230458e34bf3d51.jpg",
     "index.html": "/index.html",
     "main.734b8605.css.map": "/static/css/main.734b8605.css.map",
-    "main.adaa8380.js.map": "/static/js/main.adaa8380.js.map",
+    "main.748c066a.js.map": "/static/js/main.748c066a.js.map",
     "453.ee9775be.chunk.js.map": "/static/js/453.ee9775be.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.734b8605.css",
-    "static/js/main.adaa8380.js"
+    "static/js/main.748c066a.js"
   ]
 }
