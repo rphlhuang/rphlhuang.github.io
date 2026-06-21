@@ -46,7 +46,7 @@ function Blog() {
     setWindows(prevWindows =>
       prevWindows.filter(win => win.id !== id)
     );
-    navigate('/blog');
+    navigate('/me');
   };
 
   const bringToFront = (id) => {

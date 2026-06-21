@@ -13,7 +13,7 @@ function CustomNavbar() {
 
         let timer;
         if (clickCount === 3) {
-            navigate('/blog');
+            navigate('/me');
             setClickCount(0);
         } else if (clickCount === 6) {
             window.open(
