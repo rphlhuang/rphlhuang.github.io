@@ -65,15 +65,15 @@ function Blog() {
       isOpen: true
     };
     setWindows(prevWindows => [...prevWindows, newWindow]);
-    navigate(`/blog/${folderKey}`);
+    navigate(`/me/${folderKey}`);
   }
 
   const handleOpenPost = useCallback((folderKey, postName) => {
-    navigate(`/blog/${folderKey}/${postName}`);
+    navigate(`/me/${folderKey}/${postName}`);
   }, [navigate]);
 
   const handleClosePost = useCallback((folderKey) => {
-    navigate(`/blog/${folderKey}`);
+    navigate(`/me/${folderKey}`);
   }, [navigate]);
 
   const folderImg = require("./img/folderIcon.png");

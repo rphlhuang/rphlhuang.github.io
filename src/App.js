@@ -19,9 +19,9 @@ function App() {
         <Route path="/cv" element={<CV />} />
         <Route path="/papers" element={<Papers />} />
         <Route path="/apps" element={<Apps />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:folderKey" element={<Blog />} />
-        <Route path="/blog/:folderKey/:postName" element={<Blog />} />
+        <Route path="/me" element={<Blog />} />
+        <Route path="/me/:folderKey" element={<Blog />} />
+        <Route path="/me/:folderKey/:postName" element={<Blog />} />
         <Route path="/computers" element={<Engineering />} />
         <Route path="/music" element={<Music />} />
         <Route path="/teaching" element={<Education />} />

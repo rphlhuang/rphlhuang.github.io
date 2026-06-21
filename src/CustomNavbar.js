@@ -96,7 +96,7 @@ function CustomNavbar() {
 
             {/* <div className="navbarElem"> 
                 <div className="navbarElemText"> 
-                    <Link to="/blog" id="link"> blog </Link>
+                    <Link to="/me" id="link"> blog </Link>
                 </div>
             </div> */}
 
