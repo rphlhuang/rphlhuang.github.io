@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.734b8605.css",
-    "main.js": "/static/js/main.457c7bf9.js",
+    "main.js": "/static/js/main.bbe2fc6b.js",
     "static/js/453.ee9775be.chunk.js": "/static/js/453.ee9775be.chunk.js",
     "static/media/NowTheGreenBladeRiseth.mp3": "/static/media/NowTheGreenBladeRiseth.3e3662eb8a01d5450d92.mp3",
     "static/media/readme.jpg": "/static/media/readme.de1ecda021be50c59d49.jpg",
@@ -43,11 +43,11 @@
     "static/media/email.png": "/static/media/email.edde96781f1253399d92.png",
     "index.html": "/index.html",
     "main.734b8605.css.map": "/static/css/main.734b8605.css.map",
-    "main.457c7bf9.js.map": "/static/js/main.457c7bf9.js.map",
+    "main.bbe2fc6b.js.map": "/static/js/main.bbe2fc6b.js.map",
     "453.ee9775be.chunk.js.map": "/static/js/453.ee9775be.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.734b8605.css",
-    "static/js/main.457c7bf9.js"
+    "static/js/main.bbe2fc6b.js"
   ]
 }
