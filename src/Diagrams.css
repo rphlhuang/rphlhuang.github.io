@@ -1,0 +1,39 @@
+.diagrams-page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Hide scrollbars for scattered photos */
+    background-color: #f7f7f7; /* Slight off-white to make polaroids pop */
+}
+
+.diagrams-container {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 60px); /* Adjust for navbar approx height */
+    overflow: hidden;
+}
+
+.diagram-photo {
+    background-color: #fff;
+    padding: 10px 10px 40px 10px; /* Polaroid style border (bottom is larger) */
+    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
+    border: 1px solid #eaeaea;
+    cursor: grab;
+    user-select: none;
+    max-width: 350px;
+    max-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.diagram-photo:active {
+    cursor: grabbing;
+    box-shadow: 5px 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.diagram-photo img {
+    max-width: 100%;
+    max-height: 340px;
+    object-fit: contain;
+    pointer-events: none; /* Prevents ghost image dragging native to browsers */
+}

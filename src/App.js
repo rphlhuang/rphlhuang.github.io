@@ -10,6 +10,7 @@ import Apps from './Apps';
 import NotFound from './NotFound';
 
 import CV from './cv';
+import Diagrams from './Diagrams';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/me" element={<Blog />} />
         <Route path="/me/:folderKey" element={<Blog />} />
         <Route path="/me/:folderKey/:postName" element={<Blog />} />
+        <Route path="/diagrams" element={<Diagrams />} />
         <Route path="/computers" element={<Engineering />} />
         <Route path="/music" element={<Music />} />
         <Route path="/teaching" element={<Education />} />
