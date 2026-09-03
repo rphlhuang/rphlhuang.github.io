@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.734b8605.css",
-    "main.js": "/static/js/main.748c066a.js",
+    "main.css": "/static/css/main.d9b260c7.css",
+    "main.js": "/static/js/main.cd5e090a.js",
     "static/js/453.ee9775be.chunk.js": "/static/js/453.ee9775be.chunk.js",
     "static/media/NowTheGreenBladeRiseth.mp3": "/static/media/NowTheGreenBladeRiseth.3e3662eb8a01d5450d92.mp3",
     "static/media/readme.jpg": "/static/media/readme.de1ecda021be50c59d49.jpg",
@@ -9,16 +9,23 @@
     "static/media/LifeInDesertSands.mp3": "/static/media/LifeInDesertSands.5e87d072aa907464ec85.mp3",
     "static/media/img4.jpg": "/static/media/img4.b7f35f2300060c874444.jpg",
     "static/media/img3.jpg": "/static/media/img3.9f2af541cfbb4c8a05e4.jpg",
+    "static/media/chisel_mallettest_ARCHIDE26.drawio.png": "/static/media/chisel_mallettest_ARCHIDE26.drawio.d96bf5fd2ea27d5eb5c3.png",
     "static/media/awe.jpg": "/static/media/awe.657c503de3377bd316a7.jpg",
     "static/media/img2.jpg": "/static/media/img2.4748e1062545876dd006.jpg",
+    "static/media/ReconfigureableLLNN.drawio.png": "/static/media/ReconfigureableLLNN.drawio.f4ad77cebd43f54ffd15.png",
     "static/media/img3small.jpg": "/static/media/img3small.080a326cf6996ce91186.jpg",
+    "static/media/LARSinROS.drawio (1).png": "/static/media/LARSinROS.drawio (1).b0788f8cfb202fc4ba71.png",
     "static/media/stemed_3.jpg": "/static/media/stemed_3.ff1e0061c481ed3a185e.jpg",
     "static/media/bluebird.jpg": "/static/media/bluebird.dbff9c74125bd95696b6.jpg",
+    "static/media/cordic_block.drawio.png": "/static/media/cordic_block.drawio.54978d4d1c525e17f7ac.png",
     "static/media/stemed_4.png": "/static/media/stemed_4.fb107ff2efccc634005d.png",
+    "static/media/Z3_solver_diagram.drawio.png": "/static/media/Z3_solver_diagram.drawio.e833010c4685e590fb00.png",
     "static/media/cse100_4.jpeg": "/static/media/cse100_4.ed292b47b2b59d084920.jpeg",
     "static/media/csed_1.jpg": "/static/media/csed_1.d8744cd6042c0523447d.jpg",
     "static/media/fpga.jpg": "/static/media/fpga.dc991417d92f3e4799d8.jpg",
     "static/media/cse100_3.jpeg": "/static/media/cse100_3.87d209f17d7f8cd13e3e.jpeg",
+    "static/media/PedalController(1) (1).drawio (1).png": "/static/media/PedalController(1) (1).drawio (1).1f776a2c604bd0ede60d.png",
+    "static/media/biesta_cycle.drawio.png": "/static/media/biesta_cycle.drawio.456af72004db4731168c.png",
     "static/media/csed_4.png": "/static/media/csed_4.2add8fd9f46e79bf4196.png",
     "static/media/csed_2.jpg": "/static/media/csed_2.16fa56e5a5ce80df68f0.jpg",
     "static/media/readmesmall.jpg": "/static/media/readmesmall.c6ce7b0419b76eee6fe6.jpg",
@@ -31,6 +38,7 @@
     "static/media/graphictees.jpg": "/static/media/graphictees.5b7b03a6b045c0ea760f.jpg",
     "static/media/topia.jpg": "/static/media/topia.4b9c739a96608ee0f6c6.jpg",
     "static/media/csed_3.jpg": "/static/media/csed_3.20f421f381f6f2b06f17.jpg",
+    "static/media/ReadyValidStagev2.drawio.png": "/static/media/ReadyValidStagev2.drawio.cd6025b9190ba1873d44.png",
     "static/media/cse100_2.png": "/static/media/cse100_2.3fa74a980d1d635ce29f.png",
     "static/media/stemed_2.jpg": "/static/media/stemed_2.0ee3ee1a2612b5f07dd9.jpg",
     "static/media/img1.jpg": "/static/media/img1.34293dd5dc4fbf78bfbd.jpg",
@@ -47,12 +55,12 @@
     "static/media/email.png": "/static/media/email.edde96781f1253399d92.png",
     "static/media/topiasmall.jpg": "/static/media/topiasmall.53f7a230458e34bf3d51.jpg",
     "index.html": "/index.html",
-    "main.734b8605.css.map": "/static/css/main.734b8605.css.map",
-    "main.748c066a.js.map": "/static/js/main.748c066a.js.map",
+    "main.d9b260c7.css.map": "/static/css/main.d9b260c7.css.map",
+    "main.cd5e090a.js.map": "/static/js/main.cd5e090a.js.map",
     "453.ee9775be.chunk.js.map": "/static/js/453.ee9775be.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.734b8605.css",
-    "static/js/main.748c066a.js"
+    "static/css/main.d9b260c7.css",
+    "static/js/main.cd5e090a.js"
   ]
 }
