@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.d9b260c7.css",
-    "main.js": "/static/js/main.cd5e090a.js",
+    "main.js": "/static/js/main.c6f31d16.js",
     "static/js/453.ee9775be.chunk.js": "/static/js/453.ee9775be.chunk.js",
     "static/media/NowTheGreenBladeRiseth.mp3": "/static/media/NowTheGreenBladeRiseth.3e3662eb8a01d5450d92.mp3",
     "static/media/readme.jpg": "/static/media/readme.de1ecda021be50c59d49.jpg",
@@ -28,6 +28,7 @@
     "static/media/biesta_cycle.drawio.png": "/static/media/biesta_cycle.drawio.456af72004db4731168c.png",
     "static/media/csed_4.png": "/static/media/csed_4.2add8fd9f46e79bf4196.png",
     "static/media/csed_2.jpg": "/static/media/csed_2.16fa56e5a5ce80df68f0.jpg",
+    "static/media/openhwfp_verification.drawio.png": "/static/media/openhwfp_verification.drawio.5628742772019b58fff8.png",
     "static/media/readmesmall.jpg": "/static/media/readmesmall.c6ce7b0419b76eee6fe6.jpg",
     "static/media/cse100_1.png": "/static/media/cse100_1.353348c3a789e3842877.png",
     "static/media/img2small.jpg": "/static/media/img2small.4122d137624ca6521320.jpg",
@@ -56,11 +57,11 @@
     "static/media/topiasmall.jpg": "/static/media/topiasmall.53f7a230458e34bf3d51.jpg",
     "index.html": "/index.html",
     "main.d9b260c7.css.map": "/static/css/main.d9b260c7.css.map",
-    "main.cd5e090a.js.map": "/static/js/main.cd5e090a.js.map",
+    "main.c6f31d16.js.map": "/static/js/main.c6f31d16.js.map",
     "453.ee9775be.chunk.js.map": "/static/js/453.ee9775be.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d9b260c7.css",
-    "static/js/main.cd5e090a.js"
+    "static/js/main.c6f31d16.js"
   ]
 }
