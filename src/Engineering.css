@@ -62,7 +62,7 @@
 }
 
 @media (max-width: 600px) {
-  .App {
+  .main-container-engi {
     overflow-x: hidden
   }
   /* reset indents & lists… */

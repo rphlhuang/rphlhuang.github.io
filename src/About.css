@@ -64,10 +64,6 @@
 }
 
 @media (max-width: 769px) {
-    body {
-        overflow: scroll;
-    }
-
     .main-container {
         padding: 2vh 2vw;
         display: flex;
@@ -112,9 +108,9 @@
     }
 
     .img-container {
+        flex: none;
         aspect-ratio: 16/9;
         width: 100%;
-        height: 200px;
         overflow: hidden;
     }
 
@@ -145,13 +141,11 @@
     }
 }
 
-/* Email Interaction Styles */
 .email-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 5vw;
-    /* Maintain some width base to minimize jumpiness */
 }
 
 .email-revealed-container {

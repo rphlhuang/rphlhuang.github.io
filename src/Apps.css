@@ -59,10 +59,6 @@
 }
 
 @media (max-width: 769px) {
-    body {
-        overflow: scroll;
-    }
-
     .apps-page {
         padding: 80px 5vw 12vh;
     }

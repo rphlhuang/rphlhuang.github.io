@@ -13,6 +13,7 @@
 }
 
 .navbar {
+  position: relative;
   height: 10vh;
   background-color: black;
   display: flex;
